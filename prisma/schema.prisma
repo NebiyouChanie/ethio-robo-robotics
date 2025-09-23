@@ -13,11 +13,46 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model admin {
-  id        String   @id @default(uuid())  
-  email     String   @unique               
-  password  String                             
-  createdAt DateTime @default(now())      
-  updatedAt DateTime @updatedAt           
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Post {
+  id          Int         @id @default(autoincrement())
+  title       String
+  slug        String      @unique
+  body        String
+  imageUrl    String?
+  isDraft     Boolean     @default(true)
+  isPublished Boolean     @default(false)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  images      PostImage[]
+}
+
+model Registration {
+  id          Int      @id @default(autoincrement())
+  teamName    String
+  contactName String
+  email       String
+  phone       String
+  school      String?
+  city        String?
+  country     String?
+  division    String
+  teamSize    Int?
+  message     String?
+  createdAt   DateTime @default(now())
+}
+
+model PostImage {
+  id        Int      @id @default(autoincrement())
+  url       String
+  postId    Int
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
 }
