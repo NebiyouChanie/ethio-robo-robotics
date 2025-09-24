@@ -12,7 +12,7 @@ export default function AdminLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="[--header-height:calc(theme(spacing.14))] bg-gray-900 text-white">
+      <body className="[--header-height:calc(theme(spacing.14))] bg-gray-900 text-white overflow-x-hidden">
       <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
@@ -26,7 +26,7 @@ export default function AdminLayout({
             <AdminBreadcrumb />
           </div>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0 bg-gray-900">
+        <div className="flex flex-1 flex-col gap-4 p-4 pt-0 bg-gray-900 ">
             {children}
         </div>
       </SidebarInset>

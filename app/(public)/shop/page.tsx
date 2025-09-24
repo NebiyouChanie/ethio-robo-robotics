@@ -16,20 +16,7 @@ export default function ShopPage() {
               From beginner-friendly robotics kits to parts for advanced projects, our shop supports hands‑on learning and innovation.
               Visit us to explore kits, controllers, sensors, and learning resources—perfect for classrooms and hobby projects.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
-              <div className="bg-gray-900/50 border border-gray-700 rounded-xl p-4">
-                <div className="text-cyan-400 text-sm">Focus</div>
-                <div className="text-sm text-gray-300">Robotics Kits & Components</div>
-              </div>
-              <div className="bg-gray-900/50 border border-gray-700 rounded-xl p-4">
-                <div className="text-cyan-400 text-sm">Education</div>
-                <div className="text-sm text-gray-300">STEM & Classroom Support</div>
-              </div>
-              <div className="bg-gray-900/50 border border-gray-700 rounded-xl p-4">
-                <div className="text-cyan-400 text-sm">Tools</div>
-                <div className="text-sm text-gray-300">Innovation & Prototyping</div>
-              </div>
-            </div>
+             
           </div>
 
           <aside className="bg-gray-800/60 border border-gray-700 rounded-2xl p-8">
@@ -37,18 +24,11 @@ export default function ShopPage() {
             <div className="space-y-4 text-sm">
               <div>
                 <div className="text-gray-400">Email</div>
-                <div className="text-white">info@africanroboticschampionship.com</div>
-                <div className="text-white">ceo@africanroboticschampionship.com</div>
-                <div className="text-white">admin@africanroboticschampionship.com</div>
+                <div className="text-white">ethiorobo@gmail.com</div>
               </div>
               <div>
                 <div className="text-gray-400">Phone</div>
-                <div className="text-white">+251 91 167 5401</div>
-                <div className="text-gray-400">Mon–Fri: 8:30 AM – 5:30 PM</div>
-              </div>
-              <div>
-                <div className="text-gray-400">Address</div>
-                <div className="text-white">Addis Ababa, Ethiopia</div>
+                <div className="text-white">+251-911675401</div>
               </div>
             </div>
           </aside>
@@ -56,16 +36,14 @@ export default function ShopPage() {
 
         <div className="mt-10 bg-gray-800/60 border border-gray-700 rounded-2xl p-8">
           <h3 className="text-xl font-medium mb-4">Our Locations</h3>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm text-gray-300">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-gray-300">
             <li className="bg-gray-900/50 border border-gray-700 rounded-xl p-4">CMC (Addis International Convention Center)</li>
             <li className="bg-gray-900/50 border border-gray-700 rounded-xl p-4">Bole Tk Building</li>
             <li className="bg-gray-900/50 border border-gray-700 rounded-xl p-4">Bole Reality Plaza</li>
             <li className="bg-gray-900/50 border border-gray-700 rounded-xl p-4">Bisrate Gebriel</li>
-            <li className="bg-gray-900/50 border border-gray-700 rounded-xl p-4">Space Science & Geospatial Institute</li>
-            <li className="bg-gray-900/50 border border-gray-700 rounded-xl p-4">Burayu Talent Development Institute</li>
           </ul>
           <div className="mt-6">
-            <img src="/images/students1.png" alt="Our shop and equipment" className="w-full h-64 object-cover rounded-xl border border-gray-700" />
+            <img src="/images/shop.JPG" alt="Our shop and equipment" className="w-full h-128 object-cover rounded-xl border border-gray-700" />
           </div>
         </div>
 

@@ -12,11 +12,16 @@ export default function PostsTableClient({ posts }: { posts: any[] }) {
   const [toDelete, setToDelete] = useState<any | null>(null)
 
   const togglePublish = async (p: any) => {
-    await fetch(`/api/posts/${p.id}`, {
+    const res = await fetch(`/api/posts/${p.id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ isPublished: !p.isPublished, isDraft: p.isPublished }),
     })
+    if (!res.ok) {
+      toast.error('Failed to update status')
+      return
+    }
+    toast.success(p.isPublished ? 'Post unpublished' : 'Post published')
     router.refresh()
   }
 

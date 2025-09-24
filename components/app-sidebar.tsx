@@ -50,6 +50,10 @@ const data = {
           title: "View Registrations",
           url: "/admin/registrations",
         },
+        {
+          title: "Add Registration",
+          url: "/admin/registrations/add",
+        },
       ],
     },
   ],
@@ -57,11 +61,11 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" className="bg-gray-900 border-r border-gray-800" {...props}>
+    <Sidebar collapsible="icon" className="bg-gray-900 border-r border-gray-800 group" {...props}>
       <SidebarHeader>
-        <div className="flex items-center justify-start gap-4 px-4 border-b border-gray-800 py-4">
+        <div className="flex items-center justify-start gap-4 px-4 border-b border-gray-800 py-4 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-2">
           <Image src="/images/logo.png" alt="logo" width={50} height={50} />
-          <div className="flex flex-col">
+          <div className="flex flex-col group-data-[collapsible=icon]:hidden">
           <h1 className="text-lg font-medium -mb-1 text-white">Admin</h1>
           <h1 className="text-sm font-medium text-gray-300">Dashboard</h1>
           </div>

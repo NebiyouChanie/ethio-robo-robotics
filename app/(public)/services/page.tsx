@@ -28,7 +28,7 @@ export default function ServicesPage() {
             <div className="bg-gray-800/60 p-8 rounded-2xl border border-gray-700">
               <img src="/students1.png" alt="Robotics Education" className="w-full h-56 object-cover rounded-xl border border-gray-700 mb-6" />
               <h2 className="text-2xl lg:text-3xl font-medium mb-3">Robotics Education and Training</h2>
-              <p className="text-gray-400 leading-relaxed mb-4">We provide robotics education and training from elementary to university level, offering hands-on learning in designing, engineering, and coding. Our programs include customized AI trainings workshops for students aimed to build practical skills, foster creativity, and inspire innovation in STEM fields.</p>
+              <p className="text-gray-400 leading-relaxed mb-4">We provide robotics education and training from elementary to university level, offering immersive learning in designing, engineering, and coding. Our programs include customized AI trainings workshops for students aimed to build practical skills, foster creativity, and inspire innovation in STEM fields.</p>
               <div className="flex flex-wrap gap-3">
                 <div className="bg-cyan-500/10 border border-cyan-500/20 px-3 py-1.5 rounded-lg text-cyan-300 text-sm">Elementary Level</div>
                 <div className="bg-cyan-500/10 border border-cyan-500/20 px-3 py-1.5 rounded-lg text-cyan-300 text-sm">University Level</div>
@@ -68,9 +68,9 @@ export default function ServicesPage() {
             <div className="bg-gray-800/60 p-8 rounded-2xl border border-gray-700">
               <img src="/students4.png" alt="Teacher Training" className="w-full h-56 object-cover rounded-xl border border-gray-700 mb-6" />
               <h2 className="text-2xl lg:text-3xl font-medium mb-3">STEM-Teacher Training</h2>
-              <p className="text-gray-400 leading-relaxed mb-4">Our STEM-Teacher program transforms educators into confident and skilled robotics instructors. We provide tailored, hands-on STEM training that builds their expertise and enables them to inspire the next generation of innovators.</p>
+              <p className="text-gray-400 leading-relaxed mb-4">Our STEM-Teacher program transforms educators into confident and skilled robotics instructors. We provide tailored, practical STEM training that builds their expertise and enables them to inspire the next generation of innovators.</p>
               <div className="flex flex-wrap gap-3">
-                <div className="bg-cyan-500/10 border border-cyan-500/20 px-3 py-1.5 rounded-lg text-cyan-300 text-sm">Hands-on Training</div>
+                <div className="bg-cyan-500/10 border border-cyan-500/20 px-3 py-1.5 rounded-lg text-cyan-300 text-sm">Practical Training</div>
                 <div className="bg-cyan-500/10 border border-cyan-500/20 px-3 py-1.5 rounded-lg text-cyan-300 text-sm">Curriculum Development</div>
                 <div className="bg-cyan-500/10 border border-cyan-500/20 px-3 py-1.5 rounded-lg text-cyan-300 text-sm">Ongoing Support</div>
               </div>
@@ -95,61 +95,46 @@ export default function ServicesPage() {
               </div>
             </div>
             <div className="bg-gray-800/60 p-8 rounded-2xl border border-gray-700">
-              <img src="/students3.png" alt="Practice & Facilities" className="w-full h-56 object-cover rounded-xl border border-gray-700 mb-6" />
-              <h2 className="text-2xl lg:text-3xl font-medium mb-3">Practice & Facilities</h2>
-              <p className="text-gray-400 leading-relaxed mb-4">Access to fields, scrimmages, and mock judging for competition readiness.</p>
-              <div className="flex flex-wrap gap-3">
-                <div className="bg-cyan-500/10 border border-cyan-500/20 px-3 py-1.5 rounded-lg text-cyan-300 text-sm">Scrimmages</div>
-                <div className="bg-cyan-500/10 border border-cyan-500/20 px-3 py-1.5 rounded-lg text-cyan-300 text-sm">Mock Judging</div>
-                <div className="bg-cyan-500/10 border border-cyan-500/20 px-3 py-1.5 rounded-lg text-cyan-300 text-sm">Field Access</div>
-              </div>
-            </div>
+  <img 
+    src="/students3.png" 
+    alt="International Competition Preparation" 
+    className="w-full h-56 object-cover rounded-xl border border-gray-700 mb-6" 
+  />
+  <h2 className="text-2xl lg:text-3xl font-medium mb-3">
+    International Competition Preparation
+  </h2>
+  <p className="text-gray-400 leading-relaxed mb-4">
+    We prepare students for the ARC robotics competition through elite training, professional coaching, competition entry, and complete travel support — empowering them to compete on the global stage.
+  </p>
+  <div className="flex flex-wrap gap-3">
+    <div className="bg-cyan-500/10 border border-cyan-500/20 px-3 py-1.5 rounded-lg text-cyan-300 text-sm">
+      Elite Training
+    </div>
+    <div className="bg-cyan-500/10 border border-cyan-500/20 px-3 py-1.5 rounded-lg text-cyan-300 text-sm">
+      Professional Coaching
+    </div>
+    <div className="bg-cyan-500/10 border border-cyan-500/20 px-3 py-1.5 rounded-lg text-cyan-300 text-sm">
+      Competition Entry
+    </div>
+    <div className="bg-cyan-500/10 border border-cyan-500/20 px-3 py-1.5 rounded-lg text-cyan-300 text-sm">
+      Travel Support
+    </div>
+  </div>
+</div>
+
           </div>
         </div>
       </section>
 
-      {/* International Opportunities */}
-      <section className="py-20 px-4 bg-gray-800/50">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-medium mb-6">
-            Represent <span className="text-cyan-400">Ethiopia</span> on the World Stage
-          </h2>
-          <p className="text-gray-400 mb-8 max-w-3xl mx-auto">
-            Success in our national competitions opens doors to the VEX Robotics World Championship. Ethiopian students
-            have achieved remarkable results representing our nation globally in prestigious events.
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
-              <MapPin className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
-              <h3 className="text-xl font-medium mb-2">USA</h3>
-              <p className="text-gray-400 text-sm">VEX World Championship in Dallas, Texas</p>
-            </div>
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
-              <MapPin className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
-              <h3 className="text-xl font-medium mb-2">Canada</h3>
-              <p className="text-gray-400 text-sm">North American competitions</p>
-            </div>
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
-              <MapPin className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
-              <h3 className="text-xl font-medium mb-2">Global</h3>
-              <p className="text-gray-400 text-sm">Australia, Europe, and China events</p>
-            </div>
-          </div>
-
-          <button className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 rounded-lg font-medium transition-colors">
-            Register
-          </button>
-        </div>
-      </section>
+  
 
       {/* CTA */}
       <section className="py-20 px-4 bg-gray-800/50">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl lg:text-4xl font-medium mb-4">Ready to Bring Robotics to Your School?</h2>
+          <h2 className="text-3xl lg:text-4xl font-medium mb-4">Ready to Bring Robotics to Your School or University?</h2>
           <p className="text-gray-300 mb-8">Contact us to design a program tailored to your needs.</p>
-          <a href="/competitions" className="inline-block bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 rounded-lg font-medium transition-colors">
-            Explore Competitions
+          <a href="/contact" className="inline-block bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 rounded-lg font-medium transition-colors">
+            Contact Us
           </a>
         </div>
       </section>

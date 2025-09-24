@@ -46,7 +46,17 @@ model Registration {
   country     String?
   division    String
   teamSize    Int?
-  message     String?
+  // Extended optional fields for admin intake
+  age         String?
+  gender      String?
+  street      String?
+  region      String?
+  education   String?
+  nearest     String?
+  state       String?
+  postalCode  String?
+  availableOn String?
+  whatsapp    String?
   createdAt   DateTime @default(now())
 }
 

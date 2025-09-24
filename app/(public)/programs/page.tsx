@@ -105,7 +105,7 @@ export default function ProgramsPage() {
               <img src="/images/mr1.png" alt="Programming" className="w-full h-80 object-cover rounded-xl border border-gray-700" />
             </div>
             <div className="order-1 lg:order-2 space-y-6">
-              <h2 className="text-3xl lg:text-4xl font-medium">Programming (All Levels)</h2>
+              <h2 className="text-3xl lg:text-4xl font-medium">Programming </h2>
               <p className="text-gray-400 leading-relaxed">
                 Comprehensive coding program covering Scratch, C++ and Python. Build a portfolio with real projects using
                 industry tools and best practices.
@@ -143,7 +143,7 @@ export default function ProgramsPage() {
               </div>
             </div>
             <div>
-              <img src="/images/students4.png" alt="ARC Team Registration" className="w-full h-80 object-cover rounded-xl border border-gray-700" />
+              <img src="/images/students1.png" alt="ARC Team Registration" className="w-full h-80 object-cover rounded-xl border border-gray-700" />
             </div>
           </div>
         </div>

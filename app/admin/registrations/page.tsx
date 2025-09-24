@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { headers } from 'next/headers'
+import RegistrationsTableClient from '@/components/admin/RegistrationsTableClient'
 
 function getBaseUrl() {
   const h = headers()
@@ -50,9 +51,9 @@ export default async function AdminRegistrationsPage({ searchParams }: { searchP
       </div>
 
       <div className="bg-gray-800 rounded-lg overflow-hidden">
-        <form className="p-4 border-b border-gray-700 grid grid-cols-1 md:grid-cols-5 gap-3" action="/admin/registrations" method="get">
+        <form className="p-4 border-b border-gray-700 grid grid-cols-1 lg:grid-cols-6 gap-3 items-center" action="/admin/registrations" method="get">
           <input type="hidden" name="page" value="1" />
-          <select name="program" defaultValue={program} className="px-3 py-2 bg-gray-900 border border-gray-700 rounded text-white">
+          <select name="program" defaultValue={program} className="px-3 py-2 bg-gray-900 border border-gray-700 rounded text-white min-w-0">
             <option value="">Filter by program</option>
             <option value="VEX IQ">VEX IQ</option>
             <option value="VEX V5">VEX V5</option>
@@ -60,53 +61,20 @@ export default async function AdminRegistrationsPage({ searchParams }: { searchP
             <option value="ARC - VEX IQ">ARC - VEX IQ</option>
             <option value="ARC - VEX V5">ARC - VEX V5</option>
           </select>
-          <input type="date" name="from" defaultValue={from} placeholder="From" className="px-3 py-2 bg-gray-900 border border-gray-700 rounded text-white" />
-          <input type="date" name="to" defaultValue={to} placeholder="To" className="px-3 py-2 bg-gray-900 border border-gray-700 rounded text-white" />
-          <select name="pageSize" defaultValue={String(pageSize)} className="px-3 py-2 bg-gray-900 border border-gray-700 rounded text-white">
+          <input type="date" name="from" defaultValue={from} placeholder="From" className="px-3 py-2 bg-gray-900 border border-gray-700 rounded text-white min-w-0" />
+          <input type="date" name="to" defaultValue={to} placeholder="To" className="px-3 py-2 bg-gray-900 border border-gray-700 rounded text-white min-w-0" />
+          <select name="pageSize" defaultValue={String(pageSize)} className="px-3 py-2 bg-gray-900 border border-gray-700 rounded text-white min-w-0">
             <option value="10">10 / page</option>
             <option value="20">20 / page</option>
             <option value="50">50 / page</option>
           </select>
-          <div className="flex items-center gap-2 md:justify-end">
+          <div className="flex items-center gap-2 justify-end col-span-1 lg:col-span-2">
             <button className="bg-cyan-500 hover:bg-cyan-600 text-white rounded px-4 py-2">Apply</button>
             <a href="/admin/registrations" className="border border-gray-600 rounded px-4 py-2 hover:bg-gray-700">Reset</a>
           </div>
         </form>
         <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead className="bg-gray-700">
-              <tr>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-300">Team Name</th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-300">Contact</th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-300">Email</th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-300">Phone</th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-300">School/Org</th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-300">Division</th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-300">Team Size</th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-300">City</th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-300">Country</th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-300">Date</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-700">
-              {registrations.map((reg: any) => (
-                <tr key={reg.id} className="hover:bg-gray-700/50">
-                  <td className="px-4 py-3 text-sm text-white font-medium">{reg.teamName}</td>
-                  <td className="px-4 py-3 text-sm text-gray-300">{reg.contactName}</td>
-                  <td className="px-4 py-3 text-sm text-gray-300">{reg.email}</td>
-                  <td className="px-4 py-3 text-sm text-gray-300">{reg.phone}</td>
-                  <td className="px-4 py-3 text-sm text-gray-300">{reg.school || 'N/A'}</td>
-                  <td className="px-4 py-3 text-sm text-gray-300">{reg.division}</td>
-                  <td className="px-4 py-3 text-sm text-gray-300">{reg.teamSize || 'N/A'}</td>
-                  <td className="px-4 py-3 text-sm text-gray-300">{reg.city || '—'}</td>
-                  <td className="px-4 py-3 text-sm text-gray-300">{reg.country || '—'}</td>
-                  <td className="px-4 py-3 text-sm text-gray-400">
-                    {new Date(reg.createdAt).toLocaleDateString()}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <RegistrationsTableClient items={registrations} />
         </div>
         
         {registrations.length === 0 && (

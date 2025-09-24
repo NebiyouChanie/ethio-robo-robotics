@@ -21,12 +21,42 @@ export default function AboutPage() {
             <h1 className="text-5xl lg:text-5xl font-medium leading-tight">Who We Are</h1>
             <p className="text-gray-300 text-base leading-relaxed max-w-3xl mx-auto">
               Ethio Robo Robotics is an education-focused organization advancing practical STEM learning in Ethiopia and
-              Africa. Since 2011, we have provided hands‑on robotics programs, teacher training, and competitions that
-              help students build real engineering and problem‑solving skills.
+              Africa. Since 2011, we have provided immersive robotics programs, teacher training, and competitions that
+              help students build real engineering and problem solving skills.
             </p>
           </div>
           <div ref={refHeroImg} className={`mt-10 animate-fade-up ${inViewHeroImg?.isIntersecting ? 'visible' : ''}`}>
             <img src="/images/students1.png" alt="Students in robotics workshop" className="w-full h-96 object-cover rounded-2xl border border-cyan-500/30" />
+          </div>
+        </div>
+      </section>
+
+      {/* Mission, Vision & Values */}
+      <section className="py-24 px-4 bg-gray-800/50">
+        <div className="max-w-7xl mx-auto">
+          <h2 ref={refMVVHead} className={`text-3xl lg:text-4xl font-bold text-center mb-12 animate-fade-up ${inViewMVVHead?.isIntersecting ? 'visible' : ''}`}>Mission, Vision & Values</h2>
+          <div ref={refMVVGrid} className={`grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-up ${inViewMVVGrid?.isIntersecting ? 'visible' : ''}`}>
+            <div className="bg-gray-900/60 p-8 rounded-xl border border-gray-800">
+              <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center mb-4">
+                <Trophy className="w-6 h-6 text-cyan-400" />
+              </div>
+              <div className="text-xl font-bold mb-2">Our Mission</div>
+              <p className="text-gray-300 text-sm leading-relaxed">Inspire the next generation of engineers, programmers, and problem-solvers by providing world-class robotics education and organizing high-impact competitions that drive technological advancement in Ethiopia and beyond.</p>
+            </div>
+            <div className="bg-gray-900/60 p-8 rounded-xl border border-gray-800">
+              <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center mb-4">
+                <Lightbulb className="w-6 h-6 text-cyan-400" />
+              </div>
+              <div className="text-xl font-bold mb-2">Our Vision</div>
+              <p className="text-gray-300 text-sm leading-relaxed">Cultivate a generation of innovators and leaders who transform Ethiopia and Africa through robotics, programming, and technology-driven solutions.</p>
+            </div>
+            <div className="bg-gray-900/60 p-8 rounded-xl border border-gray-800">
+              <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center mb-4">
+                <Heart className="w-6 h-6 text-cyan-400" />
+              </div>
+              <div className="text-xl font-bold mb-2">Our Values</div>
+              <p className="text-gray-300 text-sm leading-relaxed">Innovation, teamwork, inclusivity, and excellence—guiding how we teach, mentor, and compete.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -61,35 +91,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission, Vision & Values */}
-      <section className="py-24 px-4 bg-gray-800/50">
-        <div className="max-w-7xl mx-auto">
-          <h2 ref={refMVVHead} className={`text-3xl lg:text-4xl font-bold text-center mb-12 animate-fade-up ${inViewMVVHead?.isIntersecting ? 'visible' : ''}`}>Mission, Vision & Values</h2>
-          <div ref={refMVVGrid} className={`grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-up ${inViewMVVGrid?.isIntersecting ? 'visible' : ''}`}>
-            <div className="bg-gray-900/60 p-8 rounded-xl border border-gray-800">
-              <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center mb-4">
-                <Trophy className="w-6 h-6 text-cyan-400" />
-              </div>
-              <div className="text-xl font-bold mb-2">Our Mission</div>
-              <p className="text-gray-300 text-sm leading-relaxed">Strengthen STEM foundations in Ethiopia and Africa through affordable, hands‑on robotics education and competitions.</p>
-            </div>
-            <div className="bg-gray-900/60 p-8 rounded-xl border border-gray-800">
-              <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center mb-4">
-                <Lightbulb className="w-6 h-6 text-cyan-400" />
-              </div>
-              <div className="text-xl font-bold mb-2">Our Vision</div>
-              <p className="text-gray-300 text-sm leading-relaxed">Practical STEM for every learner—through continuous making, iteration, and authentic competition experiences.</p>
-            </div>
-            <div className="bg-gray-900/60 p-8 rounded-xl border border-gray-800">
-              <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center mb-4">
-                <Heart className="w-6 h-6 text-cyan-400" />
-              </div>
-              <div className="text-xl font-bold mb-2">Our Values</div>
-              <p className="text-gray-300 text-sm leading-relaxed">Innovation, teamwork, inclusivity, and excellence—guiding how we teach, mentor, and compete.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       
      

@@ -30,7 +30,6 @@ type User = {
 export function NavUser() {
   const { isMobile } = useSidebar()
   const [user, setUser] = useState<User | null>(null)
-  console.log("🚀 ~ NavUser ~ user:", user)
   const router = useRouter()
 
   useEffect(() => {

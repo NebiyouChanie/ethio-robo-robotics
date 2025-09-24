@@ -17,8 +17,7 @@ export default function HeroSection(){
               Success Begins <span className="text-cyan-400">At Early Age</span> 
             </h1>
             <p className="text-gray-300 text- leading-relaxed max-w-lg">
-              Learn, Compete, and Create with Ethio Robo Robotics. We provide hands-on STEM education that prepares
-              students for a technology-driven future.
+            Learn, Compete, and Create with Ethio Robo Robotics. We provide interactive STEM education that prepares students for a technology-driven future
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <MotionCTA  >Explore Our Services</MotionCTA>

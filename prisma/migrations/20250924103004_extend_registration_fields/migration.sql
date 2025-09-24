@@ -1,0 +1,11 @@
+-- AlterTable
+ALTER TABLE `registration` ADD COLUMN `age` VARCHAR(191) NULL,
+    ADD COLUMN `availableOn` VARCHAR(191) NULL,
+    ADD COLUMN `education` VARCHAR(191) NULL,
+    ADD COLUMN `gender` VARCHAR(191) NULL,
+    ADD COLUMN `nearest` VARCHAR(191) NULL,
+    ADD COLUMN `postalCode` VARCHAR(191) NULL,
+    ADD COLUMN `region` VARCHAR(191) NULL,
+    ADD COLUMN `state` VARCHAR(191) NULL,
+    ADD COLUMN `street` VARCHAR(191) NULL,
+    ADD COLUMN `whatsapp` VARCHAR(191) NULL;

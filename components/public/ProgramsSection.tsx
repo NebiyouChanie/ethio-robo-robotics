@@ -20,7 +20,7 @@ export default function ProgramsSection(){
               Explore Our <span className="text-cyan-400">Programs</span>
             </h2>
             <p className="text-gray-300 leading-relaxed max-w-3xl mx-auto" >
-              Hands-on robotics and coding pathways for all levels—from beginners to advanced competitors.
+            Empowering students with robotics and coding pathways that grow with them, from curious beginners to advanced competitors.
             </p>
           </div>
 
