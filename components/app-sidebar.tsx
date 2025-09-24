@@ -27,12 +27,6 @@ import Image from "next/image"
 const data = {
   navMain: [
     {
-      title: "Dashboard",
-      url: "/admin",
-      icon: Bot,
-      isActive: true,
-    },
-    {
       title: "Posts Management", 
       url: "/admin/post",
       icon: BookOpen,

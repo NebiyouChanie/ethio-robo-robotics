@@ -16,6 +16,7 @@ type InitialPost = {
   slug?: string
   body?: string
   imageUrl?: string | null
+  images?: string[]
 }
 
 export default function PostForm({ initial }: { initial?: InitialPost }) {
@@ -27,7 +28,7 @@ export default function PostForm({ initial }: { initial?: InitialPost }) {
   const [imageUrl, setImageUrl] = useState<string | undefined>(initial?.imageUrl || undefined)
   const [submitting, setSubmitting] = useState(false)
 
-  const [gallery, setGallery] = useState<string[]>([])
+  const [gallery, setGallery] = useState<string[]>(initial?.images || [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

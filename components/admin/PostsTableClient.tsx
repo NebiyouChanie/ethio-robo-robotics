@@ -38,7 +38,7 @@ export default function PostsTableClient({ posts }: { posts: any[] }) {
                 >
                   {p.isPublished ? 'Unpublish' : 'Publish'}
                 </button>
-                <Link href={`/admin?edit=${p.id}`} className="px-3 py-1 rounded border border-gray-700 hover:bg-gray-800">Edit</Link>
+                <Link href={`/admin/post/edit/${p.id}`} className="px-3 py-1 rounded border border-gray-700 hover:bg-gray-800">Edit</Link>
               </td>
             </tr>
           ))}

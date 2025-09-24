@@ -13,7 +13,7 @@ import {
 
 function formatLabel(segment: string): string {
   const map: Record<string, string> = {
-    admin: "Dashboard",
+    admin: "Admin",
     post: "Posts",
     add: "Add",
     edit: "Edit",
@@ -41,8 +41,8 @@ export default function AdminBreadcrumb() {
     <Breadcrumb>
       <BreadcrumbList>
         {items.map((item, i) => (
-          <>
-            <BreadcrumbItem key={item.href}>
+          <div key={item.href} className="contents">
+            <BreadcrumbItem>
               {item.isLast ? (
                 <BreadcrumbPage>{item.label}</BreadcrumbPage>
               ) : (
@@ -52,7 +52,7 @@ export default function AdminBreadcrumb() {
               )}
             </BreadcrumbItem>
             {i < items.length - 1 && <BreadcrumbSeparator />}
-          </>
+          </div>
         ))}
       </BreadcrumbList>
     </Breadcrumb>
