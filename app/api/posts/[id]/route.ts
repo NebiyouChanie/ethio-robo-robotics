@@ -47,4 +47,14 @@ export async function GET(_req: NextRequest, { params }: { params: { id: string 
   }
 }
 
+export async function DELETE(_req: NextRequest, { params }: { params: { id: string } }) {
+  try {
+    const id = Number(params.id)
+    await prisma.post.delete({ where: { id } })
+    return NextResponse.json({ ok: true })
+  } catch (error: any) {
+    return NextResponse.json({ error: error?.message || 'Failed to delete post' }, { status: 500 })
+  }
+}
+
 
