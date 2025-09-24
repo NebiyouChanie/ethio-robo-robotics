@@ -6,10 +6,12 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { useState } from 'react'
 import { toast } from 'sonner'
 
-export default function RegistrationsTableClient({ items }: { items: any[] }) {
+export default function RegistrationsTableClient({ items, program }: { items: any[]; program?: string }) {
   const router = useRouter()
   const [open, setOpen] = useState(false)
   const [target, setTarget] = useState<any | null>(null)
+  const isArc = !!program && program.toUpperCase().includes('ARC')
+  const isLearner = !!program && ['VEX IQ','VEX V5','PROGRAMMING'].includes(program.toUpperCase())
 
   const onDelete = async (id: number) => {
     const res = await fetch(`/api/registrations/${id}`, { method: 'DELETE' })
@@ -30,17 +32,17 @@ export default function RegistrationsTableClient({ items }: { items: any[] }) {
             <th className="p-3">Phone</th>
             <th className="p-3">School/Org</th>
             <th className="p-3">Division</th>
-            <th className="p-3">Team Size</th>
-            <th className="p-3">Age</th>
-            <th className="p-3">Gender</th>
-            <th className="p-3">Street</th>
-            <th className="p-3">Region</th>
-            <th className="p-3">Education</th>
-            <th className="p-3">Nearest</th>
-            <th className="p-3">State</th>
-            <th className="p-3">Postal</th>
-            <th className="p-3">Available On</th>
-            <th className="p-3">WhatsApp</th>
+            {!program || isArc ? <th className="p-3">Team Size</th> : null}
+            {!program || isLearner ? <th className="p-3">Age</th> : null}
+            {!program || isLearner ? <th className="p-3">Gender</th> : null}
+            {!program || isLearner ? <th className="p-3">Street</th> : null}
+            {!program || isLearner ? <th className="p-3">Region</th> : null}
+            {!program || isLearner ? <th className="p-3">Education</th> : null}
+            {!program || isLearner ? <th className="p-3">Nearest</th> : null}
+            {!program || isArc ? <th className="p-3">State</th> : null}
+            {!program || isArc ? <th className="p-3">Postal</th> : null}
+            {!program || isArc ? <th className="p-3">Available On</th> : null}
+            {!program || isArc ? <th className="p-3">WhatsApp</th> : null}
             <th className="p-3">City</th>
             <th className="p-3">Country</th>
             <th className="p-3">Date</th>
@@ -56,17 +58,17 @@ export default function RegistrationsTableClient({ items }: { items: any[] }) {
               <td className="p-3">{r.phone}</td>
               <td className="p-3">{r.school || 'N/A'}</td>
               <td className="p-3">{r.division}</td>
-              <td className="p-3">{r.teamSize ?? '-'}</td>
-              <td className="p-3">{r.age ?? '-'}</td>
-              <td className="p-3">{r.gender ?? '-'}</td>
-              <td className="p-3">{r.street ?? '-'}</td>
-              <td className="p-3">{r.region ?? '-'}</td>
-              <td className="p-3">{r.education ?? '-'}</td>
-              <td className="p-3">{r.nearest ?? '-'}</td>
-              <td className="p-3">{r.state ?? '-'}</td>
-              <td className="p-3">{r.postalCode ?? '-'}</td>
-              <td className="p-3">{r.availableOn ?? '-'}</td>
-              <td className="p-3">{r.whatsapp ?? '-'}</td>
+              {!program || isArc ? <td className="p-3">{r.teamSize ?? '-'}</td> : null}
+              {!program || isLearner ? <td className="p-3">{r.age ?? '-'}</td> : null}
+              {!program || isLearner ? <td className="p-3">{r.gender ?? '-'}</td> : null}
+              {!program || isLearner ? <td className="p-3">{r.street ?? '-'}</td> : null}
+              {!program || isLearner ? <td className="p-3">{r.region ?? '-'}</td> : null}
+              {!program || isLearner ? <td className="p-3">{r.education ?? '-'}</td> : null}
+              {!program || isLearner ? <td className="p-3">{r.nearest ?? '-'}</td> : null}
+              {!program || isArc ? <td className="p-3">{r.state ?? '-'}</td> : null}
+              {!program || isArc ? <td className="p-3">{r.postalCode ?? '-'}</td> : null}
+              {!program || isArc ? <td className="p-3">{r.availableOn ?? '-'}</td> : null}
+              {!program || isArc ? <td className="p-3">{r.whatsapp ?? '-'}</td> : null}
               <td className="p-3">{r.city || '—'}</td>
               <td className="p-3">{r.country || '—'}</td>
               <td className="p-3 text-gray-400">{new Date(r.createdAt).toLocaleDateString()}</td>

@@ -62,6 +62,7 @@ export default function RegistrationForm({ initial }: { initial?: any }) {
         : 'VEX_IQ'
 
   const [program, setProgram] = useState<ProgramKey>(initialProgram)
+  const isEdit = Boolean(initial?.id)
 
   const programTitle = useMemo(() => {
     switch (program) {
@@ -78,16 +79,16 @@ export default function RegistrationForm({ initial }: { initial?: any }) {
     defaultValues: initial && initial.division && initialProgram !== 'ARC' ? {
       firstName: (initial.contactName || '').split(' ')[0] || '',
       lastName: (initial.contactName || '').split(' ').slice(1).join(' ') || '',
-      age: '',
-      gender: undefined as unknown as 'Male'|'Female',
+      age: initial.age || '',
+      gender: (initial.gender === 'Male' || initial.gender === 'Female' ? initial.gender : (undefined as unknown as 'Male'|'Female')),
       email: initial.email || '',
       phone: initial.phone || '',
-      street: '',
+      street: initial.street || '',
       country: initial.country || '',
-      region: initial.city || '',
-      educationLevel: undefined as unknown as 'Elementary & Middle School'|'High School'|'College / University',
+      region: initial.region || initial.city || '',
+      educationLevel: (['Elementary & Middle School','High School','College / University'].includes(initial.education) ? initial.education : (undefined as unknown as 'Elementary & Middle School'|'High School'|'College / University')),
       school: initial.school || '',
-      nearestBranch: '',
+      nearestBranch: initial.nearest || '',
     } : {
       firstName: '', lastName: '', age: '', gender: undefined as unknown as 'Male'|'Female', email: '', phone: '',
       street: '', country: '', region: '', educationLevel: undefined as unknown as 'Elementary & Middle School'|'High School'|'College / University', school: '', nearestBranch: ''
@@ -100,16 +101,16 @@ export default function RegistrationForm({ initial }: { initial?: any }) {
     defaultValues: initial && initial.division && initialProgram === 'ARC' ? {
       orgName: initial.school || '',
       city: initial.city || '',
-      state: '',
+      state: initial.state || '',
       country: initial.country || '',
-      postalCode: '',
+      postalCode: initial.postalCode || '',
       teamName: initial.teamName || '',
       numMembers: initial.teamSize || 1,
       programChoice: (initial.division?.includes('VEX V5') ? 'VEX V5' : 'VEX IQ') as 'VEX IQ'|'VEX V5',
-      availableDate: '',
+      availableDate: initial.availableOn || '',
       repName: initial.contactName || '',
       repEmail: initial.email || '',
-      repWhatsapp: '',
+      repWhatsapp: initial.whatsapp || '',
       repPhone: initial.phone || '',
     } : {
       orgName: '', city: '', state: '', country: '', postalCode: '', teamName: '', numMembers: 1,
@@ -187,8 +188,15 @@ export default function RegistrationForm({ initial }: { initial?: any }) {
           { key: 'ARC', label: 'Team Registration for ARC', sub: 'Join our elite competition team' },
         ] as { key: ProgramKey, label: string, sub: string }[]).map(item => {
           const active = program === item.key
+          const disabled = isEdit && item.key !== initialProgram
           return (
-            <button key={item.key} onClick={()=>setProgram(item.key)} type="button" className={`w-full text-left rounded-xl p-6 border transition ${active ? 'border-cyan-500 bg-cyan-500/10 shadow' : 'border-gray-700 hover:border-cyan-500/60'}`}>
+            <button
+              key={item.key}
+              onClick={()=>{ if (!disabled) setProgram(item.key) }}
+              type="button"
+              disabled={disabled}
+              className={`w-full text-left rounded-xl p-6 border transition ${active ? 'border-cyan-500 bg-cyan-500/10 shadow' : 'border-gray-700 hover:border-cyan-500/60'} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+            >
               <div className="font-medium">{item.label}</div>
               <div className="text-xs text-gray-400 mt-1">{item.sub}</div>
               {active && <div className="mt-2 text-cyan-400 text-xs">Selected</div>}
@@ -264,7 +272,7 @@ export default function RegistrationForm({ initial }: { initial?: any }) {
                 </div>
 
                 <div className="pt-2">
-                  <button type="submit" className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg">Save Registration</button>
+                  <button type="submit" disabled={learnerForm.formState.isSubmitting} className="bg-cyan-500 hover:bg-cyan-600 disabled:opacity-60 text-white px-6 py-3 rounded-lg">{learnerForm.formState.isSubmitting ? 'Saving...' : 'Save Registration'}</button>
                 </div>
               </form>
             </>
@@ -295,10 +303,10 @@ export default function RegistrationForm({ initial }: { initial?: any }) {
                     <div className="col-span-2">
                       <div className="flex items-center gap-4 bg-gray-900 border border-gray-700 rounded-lg p-3">
                         <label className="flex items-center gap-2 text-sm">
-                          <input type="radio" value="VEX IQ" {...arcForm.register('programChoice')} /> VEX IQ
+                          <input type="radio" value="VEX IQ" disabled={isEdit} {...arcForm.register('programChoice')} /> VEX IQ
                         </label>
                         <label className="flex items-center gap-2 text-sm">
-                          <input type="radio" value="VEX V5" {...arcForm.register('programChoice')} /> VEX V5
+                          <input type="radio" value="VEX V5" disabled={isEdit} {...arcForm.register('programChoice')} /> VEX V5
                         </label>
                       </div>
                     </div>
@@ -320,7 +328,7 @@ export default function RegistrationForm({ initial }: { initial?: any }) {
                 </div>
 
                 <div className="pt-2">
-                  <button type="submit" className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg">Save Registration</button>
+                  <button type="submit" disabled={arcForm.formState.isSubmitting} className="bg-cyan-500 hover:bg-cyan-600 disabled:opacity-60 text-white px-6 py-3 rounded-lg">{arcForm.formState.isSubmitting ? 'Saving...' : 'Save Registration'}</button>
                 </div>
               </form>
             </>

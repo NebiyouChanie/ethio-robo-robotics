@@ -70,11 +70,12 @@ export default async function AdminRegistrationsPage({ searchParams }: { searchP
           </select>
           <div className="flex items-center gap-2 col-span-1 lg:col-span-2">
             <button className="bg-cyan-500 hover:bg-cyan-600 text-white rounded px-4 py-2">Apply</button>
+            <a href={`/api/registrations/export?${new URLSearchParams({ program, from, to }).toString()}`} className="border border-gray-600 rounded px-4 py-2 hover:bg-gray-700" target="_blank" rel="noopener noreferrer">Export CSV</a>
             <a href="/admin/registrations" className="border border-gray-600 rounded px-4 py-2 hover:bg-gray-700">Reset</a>
           </div>
         </form>
         <div className="">
-          <RegistrationsTableClient items={registrations} />
+          <RegistrationsTableClient items={registrations} program={program} />
         </div>
         {registrations.length === 0 && (
           <div className="text-center py-8 text-gray-400">
