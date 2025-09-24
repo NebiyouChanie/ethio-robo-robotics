@@ -1,6 +1,6 @@
 export default function ShopTeaser() {
   return (
-    <section className="py-20 px-4 bg-gray-800/50">
+    <section className="py-20 px-4 section-alt">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div className="space-y-4">
           <div className="text-sm text-cyan-400 tracking-wider">SHOP</div>

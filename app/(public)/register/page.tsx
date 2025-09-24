@@ -71,13 +71,13 @@ export default function RegisterPage() {
       lastName: '',
       age: '',
       gender: undefined as unknown as 'Male' | 'Female',
-      email: '',
-      phone: '',
+    email: '',
+    phone: '',
       street: '',
       country: '',
       region: '',
       educationLevel: undefined as unknown as 'Elementary & Middle School' | 'High School' | 'College / University',
-      school: '',
+    school: '',
       nearestBranch: '',
     }
   })
@@ -85,9 +85,9 @@ export default function RegisterPage() {
     resolver: zodResolver(arcSchema) as any,
     defaultValues: {
       orgName: '',
-      city: '',
+    city: '',
       state: '',
-      country: '',
+    country: '',
       postalCode: '',
       teamName: '',
       numMembers: 1,
@@ -119,13 +119,13 @@ export default function RegisterPage() {
       teamSize: undefined,
       message: `Age: ${values.age}\nGender: ${values.gender}\nStreet: ${values.street}\nEducation Level: ${values.educationLevel}\nNearest Branch: ${values.nearestBranch}`,
     }
-    const res = await fetch('/api/registrations', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-    if (!res.ok) {
+      const res = await fetch('/api/registrations', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+      if (!res.ok) {
       let data: any = {}
       try { data = await res.json() } catch {}
       toast.error(data?.error || 'Failed to register')
-      return
-    }
+        return
+      }
     toast.success('Registration submitted!')
     learnerForm.reset()
   }
@@ -158,7 +158,7 @@ export default function RegisterPage() {
     <div className="min-h-screen bg-gray-900 text-white">
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-8">
+        <div className="text-center mb-8">
             <h1 className="text-5xl font-medium max-w-xl mx-auto">Get involved to <span className="text-cyan-400">Design, Build, and Program!</span></h1>
             <p className="text-gray-300 mt-4 max-w-3xl mx-auto">Register for our comprehensive robotics programs and join thousands of students who are building the technology of tomorrow today.</p>
           </div>
@@ -182,7 +182,7 @@ export default function RegisterPage() {
                 )
               })}
             </div>
-            </div>
+          </div>
 
             {/* Form panel */}
             <div className="">
@@ -311,15 +311,15 @@ export default function RegisterPage() {
                       <div className="pt-2">
                         <button type="submit" className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg">
                           Register Team
-                        </button>
+          </button>
                       </div>
-                    </form>
+        </form>
                   </>
                 )}
               </div>
             </div>
-          </div>
-      </section>
+      </div>
+    </section>
     </div>
   )
 }

@@ -70,7 +70,8 @@ body {
 .theme-light .bg-gray-900\/60 { background-color: #ffffff !important; }
 .theme-light .bg-gray-900\/70 { background-color: #ffffff !important; }
 .theme-light .bg-gray-800, .theme-light .bg-gray-800\/50 { background-color: #f8fafc !important; }
-.theme-light .bg-gray-800\/60 { background-color: #f8fafc !important; }
+.theme-light .bg-gray-800\/60 { background-color: #eef2f7 !important; }
+.theme-light .section-alt { background-color: #f8fafc !important; }
 .theme-light .bg-gray-700 { background-color: #e5e7eb !important; }
 .theme-light .text-white { color: #0f172a !important; }
 .theme-light .text-gray-300 { color: #334155 !important; }
@@ -97,6 +98,10 @@ body {
 
 /* Light mode dropdown/menu surfaces */
 .theme-light .shadow-xl { box-shadow: 0 10px 20px rgba(2,6,23,0.08), 0 6px 6px rgba(2,6,23,0.06) !important; }
+
+/* Force-light-mode exceptions for overlay text on image cards */
+.theme-light .force-white { color: #ffffff !important; }
+.theme-light .force-gray-100 { color: #f5f5f5 !important; }
 @import "tailwindcss";
 
 :root {

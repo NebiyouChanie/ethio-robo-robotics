@@ -9,7 +9,7 @@ export default function HeroSection(){
     const [ref2, inView2] = useIntersectionObserver({ threshold: 0.1 });
 
     return (
-        <section className="py-32 px-4">
+        <section className="py-32 px-4 section-alt">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div ref={ref1} className={`space-y-6 animate-fade-up ${inView1?.isIntersecting ? 'visible' : ''}`}>
             <div className="text-sm text-cyan-400 tracking-wider">ROBOTICS INNOVATORS</div>

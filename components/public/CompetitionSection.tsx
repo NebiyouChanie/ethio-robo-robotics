@@ -49,10 +49,10 @@ export default function CompitionSection() {
         alt={card.title}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-colors"></div>
-      <div className="absolute inset-0 flex flex-col p-4 justify-end">
-        <h3 className="text-xl md:text-2xl font-medium mb-2">{card.title}</h3>
-        <p className="text-gray-300 text-xs md:text-base max-w-xl">
+      <div className="z-10 absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/90 transition-colors"></div>
+      <div className="z-20 absolute inset-0 flex flex-col p-4 justify-end">
+        <h3 className="text-xl md:text-2xl font-medium mb-2 force-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">{card.title}</h3>
+        <p className="force-gray-100 text-xs md:text-base max-w-xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
           {card.desc}
         </p>
       </div>

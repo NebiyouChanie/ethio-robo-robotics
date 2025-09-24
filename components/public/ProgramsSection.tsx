@@ -25,49 +25,38 @@ export default function ProgramsSection(){
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            <div ref={ref3} className={`relative rounded-xl overflow-hidden border border-gray-700 group h-72 animate-scale-in ${inView3?.isIntersecting ? 'visible' : ''}`} >
-              <Link href="/programs" className="relative block h-full">
-                <img src="/images/students1.png" alt="Elementary & Middle School Training" className="absolute inset-0 w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-colors"></div>
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  <h3 className="text-2xl font-medium mb-2">Elementary & Middle School Training</h3>
-                  <p className="text-gray-300 text-sm">VEX IQ foundations in coding, design, and problem‑solving.</p>
-                </div>
-              </Link>
-            </div>
-
-            <div ref={ref4} className={`relative rounded-xl overflow-hidden border border-gray-700 group h-72 animate-scale-in ${inView4?.isIntersecting ? 'visible' : ''}`} >
-              <Link href="/programs" className="relative block h-full">
-                <img src="/images/students3.png" alt="Programming" className="absolute inset-0 w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-colors"></div>
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  <h3 className="text-2xl font-medium mb-2">Programming (All Levels)</h3>
-                  <p className="text-gray-300 text-sm">Scratch, C++, and Python. Projects, portfolio, and tools.</p>
-                </div>
-              </Link>
-            </div>
-
-            <div ref={ref5} className={`relative rounded-xl overflow-hidden border border-gray-700 group h-72 animate-scale-in ${inView5?.isIntersecting ? 'visible' : ''}`} >
-              <Link href="/programs" className="relative block h-full">
-                <img src="/images/mr2.png" alt="High School Training" className="absolute inset-0 w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-colors"></div>
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  <h3 className="text-2xl font-medium mb-2">High School Level</h3>
-                  <p className="text-gray-300 text-sm mb-3">VEX V5 fundamentals: coding, mechanics, and challenge strategy.</p>
-                </div>
-              </Link>
-            </div>
-
-            <div ref={ref6} className={`relative rounded-xl overflow-hidden border border-gray-700 group h-72 animate-scale-in ${inView6?.isIntersecting ? 'visible' : ''}`} >
-              <Link href="/programs" className="relative block h-full">
-                <img src="/images/location3.png" alt="College & University Training" className="absolute inset-0 w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-colors"></div>
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  <h3 className="text-2xl font-medium mb-2">College & University Training</h3>
-                  <p className="text-gray-300 text-sm">Advanced VEX V5: sensors, algorithms, and competition prep.</p>
-                </div>
-              </Link>
-            </div>
+            {[{
+              img: '/images/students1.png',
+              alt: 'Elementary & Middle School Training',
+              title: 'Elementary & Middle School Training',
+              desc: 'VEX IQ foundations in coding, design, and problem‑solving.'
+            },{
+              img: '/images/students3.png',
+              alt: 'Programming',
+              title: 'Programming (All Levels)',
+              desc: 'Scratch, C++, and Python. Projects, portfolio, and tools.'
+            },{
+              img: '/images/mr2.png',
+              alt: 'High School Training',
+              title: 'High School Level',
+              desc: 'VEX V5 fundamentals: coding, mechanics, and challenge strategy.'
+            },{
+              img: '/images/location3.png',
+              alt: 'College & University Training',
+              title: 'College & University Training',
+              desc: 'Advanced VEX V5: sensors, algorithms, and competition prep.'
+            }].map((card, idx) => (
+              <div key={idx} ref={[ref3, ref4, ref5, ref6][idx]} className={`relative rounded-xl overflow-hidden border border-gray-700 group h-72 animate-scale-in ${[inView3, inView4, inView5, inView6][idx]?.isIntersecting ? 'visible' : ''}`}>
+                <Link href="/programs" className="relative block h-full">
+                  <img src={card.img} alt={card.alt} className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/90 transition-colors"></div>
+                  <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                    <h3 className="text-2xl font-medium mb-2 force-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">{card.title}</h3>
+                    <p className="force-gray-100 text-sm drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">{card.desc}</p>
+                  </div>
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </section>
