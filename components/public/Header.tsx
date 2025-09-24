@@ -37,6 +37,7 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
   const [isLight, setIsLight] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [servicesHoverTimeout, setServicesHoverTimeout] = useState<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     const stored = typeof window !== 'undefined' ? localStorage.getItem("theme") : null
@@ -48,6 +49,15 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
       document.documentElement.classList.remove("theme-light")
     }
   }, [])
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (servicesHoverTimeout) {
+        clearTimeout(servicesHoverTimeout)
+      }
+    }
+  }, [servicesHoverTimeout])
 
   const toggleTheme = () => {
     setIsLight((prev) => {
@@ -61,6 +71,21 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
       }
       return next
     })
+  }
+
+  const handleServicesMouseEnter = () => {
+    if (servicesHoverTimeout) {
+      clearTimeout(servicesHoverTimeout)
+      setServicesHoverTimeout(null)
+    }
+    setServicesOpen(true)
+  }
+
+  const handleServicesMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setServicesOpen(false)
+    }, 150) // Small delay to prevent flickering
+    setServicesHoverTimeout(timeout)
   }
 
   return (
@@ -89,8 +114,8 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
 
           <div
             className="relative"
-            onMouseEnter={() => setServicesOpen(true)}
-            onMouseLeave={() => setServicesOpen(false)}
+            onMouseEnter={handleServicesMouseEnter}
+            onMouseLeave={handleServicesMouseLeave}
           >
             <button
               type="button"
@@ -103,7 +128,7 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
               <ChevronDown size={18} />
             </button>
             {servicesOpen && (
-              <div className={`absolute left-0 top-full mt-1 w-56 rounded-lg border shadow-xl z-50 ${isLight ? 'border-gray-200 bg-white' : 'border-gray-800 bg-gray-900'}`}>
+              <div className={`absolute left-0 top-full w-56 rounded-lg border shadow-xl z-50 ${isLight ? 'border-gray-200 bg-white' : 'border-gray-800 bg-gray-900'}`}>
                 <div className="py-2">
                   {servicesLinks.map(s => (
                     <Link
