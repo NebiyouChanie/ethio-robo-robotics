@@ -156,10 +156,19 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
+      {/* Shared gradient for icon strokes */}
+      <svg width="0" height="0" className="absolute">
+        <defs>
+          <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="var(--primary)" />
+            <stop offset="100%" stopColor="var(--secondary)" />
+          </linearGradient>
+        </defs>
+      </svg>
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
         <div className="text-center mb-8">
-            <h1 className="text-5xl font-medium max-w-xl mx-auto">Get involved to <span className="text-cyan-400">Design, Build, and Program!</span></h1>
+            <h1 className="text-5xl font-medium max-w-xl mx-auto">Get involved to <span className="brand-text">Design, Build, and Program!</span></h1>
             <p className="text-gray-300 mt-4 max-w-3xl mx-auto">Register for our comprehensive robotics programs and join thousands of students who are building the technology of tomorrow today.</p>
           </div>
 
@@ -174,10 +183,10 @@ export default function RegisterPage() {
               ] as { key: ProgramKey, label: string, sub: string }[]).map(item => {
                 const active = program === item.key
                 return (
-                  <button key={item.key} onClick={()=>setProgram(item.key)} type="button" className={`w-full text-left rounded-xl p-6 border transition ${active ? 'border-cyan-500 bg-cyan-500/10 shadow' : 'border-gray-700 hover:border-cyan-500/60'}`}>
+                  <button key={item.key} onClick={()=>setProgram(item.key)} type="button" className={`w-full text-left rounded-xl p-6 border transition ${active ? 'border-[var(--primary)] bg-[var(--primary)]/10 shadow' : 'border-gray-700 hover:border-[var(--primary)]/60'}`}>
                     <div className="font-medium">{item.label}</div>
                     <div className="text-xs text-gray-400 mt-1">{item.sub}</div>
-                    {active && <div className="mt-2 text-cyan-400 text-xs">Selected</div>}
+                    {active && <div className="mt-2 brand-text text-xs">Selected</div>}
                   </button>
                 )
               })}
@@ -196,7 +205,7 @@ export default function RegisterPage() {
 
                     <form onSubmit={learnerForm.handleSubmit(submitLearner as any)} className="space-y-6">
                       <div>
-                        <div className="text-sm text-cyan-400 font-medium mb-2">Personal Information</div>
+                        <div className="text-sm brand-text font-medium mb-2">Personal Information</div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <input placeholder="First Name" {...learnerForm.register('firstName')} className={`w-full px-4 py-3 bg-gray-900 border rounded-lg ${learnerForm.formState.errors.firstName ? 'border-red-500' : 'border-gray-700'}`} />
@@ -218,7 +227,7 @@ export default function RegisterPage() {
                       </div>
 
                       <div>
-                        <div className="text-sm text-cyan-400 font-medium mb-2">Address Information</div>
+                        <div className="text-sm brand-text font-medium mb-2">Address Information</div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <input placeholder="Enter your full address" {...learnerForm.register('street')} className={`w-full px-4 py-3 bg-gray-900 border rounded-lg ${learnerForm.formState.errors.street ? 'border-red-500' : 'border-gray-700'}`} />
                           <input placeholder="Enter your region" {...learnerForm.register('region')} className={`w-full px-4 py-3 bg-gray-900 border rounded-lg ${learnerForm.formState.errors.region ? 'border-red-500' : 'border-gray-700'}`} />
@@ -227,7 +236,7 @@ export default function RegisterPage() {
                       </div>
 
                       <div>
-                        <div className="text-sm text-cyan-400 font-medium mb-2">Educational Background</div>
+                        <div className="text-sm brand-text font-medium mb-2">Educational Background</div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <select {...learnerForm.register('educationLevel')} className={`w-full px-4 py-3 bg-gray-900 border rounded-lg ${learnerForm.formState.errors.educationLevel ? 'border-red-500' : 'border-gray-700'}`}>
                             <option value="">Select your education level</option>
@@ -240,7 +249,7 @@ export default function RegisterPage() {
                       </div>
 
                       <div>
-                        <div className="text-sm text-cyan-400 font-medium mb-2">Program Selection</div>
+                        <div className="text-sm brand-text font-medium mb-2">Program Selection</div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
                           <input disabled value={programTitle} className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-gray-300" />
                           <select {...learnerForm.register('nearestBranch')} className={`w-full px-4 py-3 bg-gray-900 border rounded-lg ${learnerForm.formState.errors.nearestBranch ? 'border-red-500' : 'border-gray-700'}`}>
@@ -251,7 +260,7 @@ export default function RegisterPage() {
                       </div>
 
                       <div className="pt-2">
-                        <button type="submit" className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg">
+                        <button type="submit" className="brand-gradient hover:opacity-90 text-white px-6 py-3 rounded-lg">
                           Complete Registration
                         </button>
                       </div>
@@ -266,7 +275,7 @@ export default function RegisterPage() {
 
                     <form onSubmit={arcForm.handleSubmit(submitArc)} className="space-y-6">
                       <div>
-                        <div className="text-sm text-cyan-400 font-medium mb-2">School/Organization Information</div>
+                        <div className="text-sm brand-text font-medium mb-2">School/Organization Information</div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <input placeholder="Enter company name" {...arcForm.register('orgName')} className={`w-full px-4 py-3 bg-gray-900 border rounded-lg ${arcForm.formState.errors.orgName ? 'border-red-500' : 'border-gray-700'}`} />
                           <input placeholder="State" {...arcForm.register('state')} className={`w-full px-4 py-3 bg-gray-900 border rounded-lg ${arcForm.formState.errors.state ? 'border-red-500' : 'border-gray-700'}`} />
@@ -277,7 +286,7 @@ export default function RegisterPage() {
                       </div>
 
                       <div>
-                        <div className="text-sm text-cyan-400 font-medium mb-2">Team Information</div>
+                        <div className="text-sm brand-text font-medium mb-2">Team Information</div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <input placeholder="Team Name" {...arcForm.register('teamName')} className={`w-full px-4 py-3 bg-gray-900 border rounded-lg ${arcForm.formState.errors.teamName ? 'border-red-500' : 'border-gray-700'}`} />
                           <input type="number" min={1} placeholder="Number of Members" {...arcForm.register('numMembers', { valueAsNumber: true })} className={`w-full px-4 py-3 bg-gray-900 border rounded-lg ${arcForm.formState.errors.numMembers ? 'border-red-500' : 'border-gray-700'}`} />
@@ -299,7 +308,7 @@ export default function RegisterPage() {
                       </div>
 
                       <div>
-                        <div className="text-sm text-cyan-400 font-medium mb-2">Team Representative</div>
+                        <div className="text-sm brand-text font-medium mb-2">Team Representative</div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <input placeholder="Representative name" {...arcForm.register('repName')} className={`w-full px-4 py-3 bg-gray-900 border rounded-lg ${arcForm.formState.errors.repName ? 'border-red-500' : 'border-gray-700'}`} />
                           <input placeholder="Email address" {...arcForm.register('repEmail')} className={`w-full px-4 py-3 bg-gray-900 border rounded-lg ${arcForm.formState.errors.repEmail ? 'border-red-500' : 'border-gray-700'}`} />
@@ -309,7 +318,7 @@ export default function RegisterPage() {
                       </div>
 
                       <div className="pt-2">
-                        <button type="submit" className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg">
+                        <button type="submit" className="brand-gradient hover:opacity-90 text-white px-6 py-3 rounded-lg">
                           Register Team
           </button>
                       </div>

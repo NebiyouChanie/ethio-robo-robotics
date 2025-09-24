@@ -70,7 +70,7 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
         <a href="/" className="flex items-center gap-3  py-2 px-4 rounded-full">
           <img src="/images/logo.png" alt="Ethio Robo Robotics" className="h-12 w-auto rounded" />
           {/* <div className="hidden sm:block">
-            <div className="text-2xl font-bold text-cyan-400 leading-none">ETHIO ROBO</div>
+            <div className="text-2xl font-bold brand-text leading-none">ETHIO ROBO</div>
             <div className="text-xs text-gray-400 tracking-wider leading-none">ROBOTICS EDUCATION</div>
           </div> */}
         </a>
@@ -81,7 +81,7 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
             <Link
               key={link.href}
               href={link.href}
-              className={`cursor-pointer transition-colors ${isActiveHref(link.href) ? 'text-cyan-400 font-medium' : 'text-white hover:text-cyan-400'}`}
+              className={`cursor-pointer transition-colors ${isActiveHref(link.href) ? 'text-[var(--primary)] font-medium' : 'text-white hover:text-[var(--primary)]'}`}
             >
               {link.label}
             </Link>
@@ -95,7 +95,7 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
             <button
               type="button"
               onClick={(e) => { e.preventDefault(); setServicesOpen((o) => !o) }}
-              className={`flex items-center gap-1 cursor-pointer transition-colors ${isActiveHref(servicesLinks.map(s => s.href)) ? 'text-cyan-400 font-medium' : 'text-white hover:text-cyan-400'}`}
+              className={`flex items-center gap-1 cursor-pointer transition-colors ${isActiveHref(servicesLinks.map(s => s.href)) ? 'text-[var(--primary)] font-medium' : 'text-white hover:text-[var(--primary)]'}`}
               aria-haspopup="menu"
               aria-expanded={servicesOpen}
             >
@@ -122,7 +122,7 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
             <Link
               key={link.href}
               href={link.href}
-              className={`cursor-pointer transition-colors ${isActiveHref(link.href) ? 'text-cyan-400 font-medium' : 'text-white hover:text-cyan-400'}`}
+              className={`cursor-pointer transition-colors ${isActiveHref(link.href) ? 'text-[var(--primary)] font-medium' : 'text-white hover:text-[var(--primary)]'}`}
             >
               {link.label}
             </Link>
@@ -131,11 +131,11 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
         
           <div className="hidden md:flex items-center gap-2">
             {/* Theme toggle */}
-          <button onClick={toggleTheme} className="text-cyan-400 hover:text-white transition-colors" aria-label="Toggle theme">
+          <button onClick={toggleTheme} className="text-[var(--primary)] hover:text-white transition-colors" aria-label="Toggle theme">
             {isLight ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
           </button>
           <Link href="/register">
-            <button className="px-8 py-2 rounded-lg relative cursor-pointer border border-cyan-400 text-cyan-400 hover:text-white transition-colors">
+            <button className="px-8 py-2 rounded-lg relative cursor-pointer brand-gradient text-white transition-colors hover:brightness-110">
               Register Now
             </button>
             </Link>
@@ -144,7 +144,7 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
           
           {/* Mobile toggles */}
           <div className="md:hidden flex items-center gap-2">
-            <button onClick={toggleTheme} className="text-cyan-400 hover:text-white transition-colors" aria-label="Toggle theme">
+            <button onClick={toggleTheme} className="text-[var(--primary)] hover:text-white transition-colors" aria-label="Toggle theme">
               {isLight ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
             </button>
             <button onClick={() => setMobileOpen((o)=>!o)} aria-label="Toggle menu" className="text-white">
@@ -158,7 +158,7 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
     {mobileOpen && (
       <div className="md:hidden bg-gray-900 border-b border-gray-800 px-4 py-3">
         <div className="max-w-7xl mx-auto flex flex-col gap-2">
-          <Link href="/" className={`py-2 ${isActiveHref('/') ? 'text-cyan-400 font-medium' : 'text-white'}`} onClick={()=>setMobileOpen(false)}>Home</Link>
+          <Link href="/" className={`py-2 ${isActiveHref('/') ? 'text-[var(--primary)] font-medium' : 'text-white'}`} onClick={()=>setMobileOpen(false)}>Home</Link>
           {/* Services dropdown simplified for mobile */}
           <div className="border border-gray-800 rounded-lg overflow-hidden">
             <button type="button" className="w-full flex items-center justify-between px-4 py-2 text-white" onClick={()=>setServicesOpen((o)=>!o)}>
@@ -181,12 +181,12 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
             )}
           </div>
           {mainLinks.slice(2).map(link => (
-            <Link key={link.href} href={link.href} className={`py-2 ${isActiveHref(link.href) ? 'text-cyan-400 font-medium' : 'text-white'}`} onClick={()=>setMobileOpen(false)}>
+            <Link key={link.href} href={link.href} className={`py-2 ${isActiveHref(link.href) ? 'text-[var(--primary)] font-medium' : 'text-white'}`} onClick={()=>setMobileOpen(false)}>
               {link.label}
             </Link>
           ))}
           <Link href="/register" className="mt-2">
-            <button className="w-full px-4 py-2 rounded-lg border border-cyan-400 text-cyan-400 hover:text-white">Register Now</button>
+            <button className="w-full px-4 py-2 rounded-lg brand-gradient text-white hover:brightness-110">Register Now</button>
           </Link>
         </div>
       </div>

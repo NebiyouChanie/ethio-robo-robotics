@@ -12,9 +12,9 @@ export default function HeroSection(){
         <section className="py-32 px-4 section-alt">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div ref={ref1} className={`space-y-6 animate-fade-up ${inView1?.isIntersecting ? 'visible' : ''}`}>
-            <div className="text-sm text-cyan-400 tracking-wider">ROBOTICS INNOVATORS</div>
+            <div className="text-sm brand-text tracking-wider">ROBOTICS INNOVATORS</div>
             <h1 className="text-5xl lg:text-6xl font-medium leading-tight text-balance">
-              Success Begins <span className="text-cyan-400">At Early Age</span> 
+              Success Begins <span className="brand-text">At Early Age</span> 
             </h1>
             <p className="text-gray-300 text- leading-relaxed max-w-lg">
             Learn, Compete, and Create with Ethio Robo Robotics. We provide interactive STEM education that prepares students for a technology-driven future
@@ -27,19 +27,19 @@ export default function HeroSection(){
 
           <div ref={ref2} className={`relative animate-fade-up ${inView2?.isIntersecting ? 'visible' : ''}`}>
             <div className="relative w-full max-w-xl h-64 sm:h-80 md:h-96 mx-auto overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl blur-xl pointer-events-none"></div>
+              <div className="absolute inset-0 brand-gradient/20 rounded-2xl blur-xl pointer-events-none" style={{ backgroundImage: `linear-gradient(to right, var(--primary), var(--secondary))`, opacity: 0.2 }}></div>
               <img
                 src="/images/students1.png"
                 alt="Students building robots"
-                className="relative w-full h-full object-cover rounded-2xl border border-cyan-500/30 select-none"
+                className="relative w-full h-full object-cover rounded-2xl border border-[color:var(--primary)]/30 select-none"
               />
             </div>
             {/* floating gears outside the clipped container */}
             <div className="absolute -top-4 -right-4 opacity-90 animate-spin-slow z-10">
-              <Cog className="w-8 h-8 text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.6)]" />
+              <Cog className="w-8 h-8 text-[var(--secondary)] drop-shadow-[0_0_10px_rgba(237,33,36,0.5)]" />
             </div>
             <div className="absolute -bottom-4 -left-4 opacity-80 animate-spin-slow-reverse z-10">
-              <Cog className="w-6 h-6 text-blue-400 drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
+              <Cog className="w-6 h-6 text-[var(--primary)] drop-shadow-[0_0_8px_rgba(45,53,129,0.5)]" />
             </div>
           </div>
         </div>

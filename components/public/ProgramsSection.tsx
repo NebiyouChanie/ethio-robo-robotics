@@ -15,9 +15,9 @@ export default function ProgramsSection(){
         <section className="py-20 px-4 bg-gray-800/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div ref={ref1} className={`text-sm text-cyan-400 tracking-wider mb-4 animate-fade-in ${inView1?.isIntersecting ? 'visible' : ''}`}>PROGRAMS</div>
+            <div ref={ref1} className={`text-sm brand-text tracking-wider mb-4 animate-fade-in ${inView1?.isIntersecting ? 'visible' : ''}`}>PROGRAMS</div>
             <h2 ref={ref2} className={`text-4xl lg:text-5xl font-medium mb-6 animate-fade-up ${inView2?.isIntersecting ? 'visible' : ''}`} >
-              Explore Our <span className="text-cyan-400">Programs</span>
+              Explore Our <span className="brand-text">Programs</span>
             </h2>
             <p className="text-gray-300 leading-relaxed max-w-3xl mx-auto" >
             Empowering students with robotics and coding pathways that grow with them, from curious beginners to advanced competitors.

@@ -17,9 +17,9 @@ export default function StoriesSection(){
         <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
-            <div ref={ref1} className={`text-sm text-cyan-400 tracking-wider mb-2 animate-fade-in ${inView1?.isIntersecting ? 'visible' : ''}`}>STUDENT SUCCESS</div>
+            <div ref={ref1} className={`text-sm brand-text tracking-wider mb-2 animate-fade-in ${inView1?.isIntersecting ? 'visible' : ''}`}>STUDENT SUCCESS</div>
             <h2 ref={ref2} className={`text-4xl lg:text-5xl font-medium animate-fade-up ${inView2?.isIntersecting ? 'visible' : ''}`}>
-              Stories in <span className="text-cyan-400">Snapshots</span>
+              Stories in <span className="brand-text">Snapshots</span>
             </h2>
           </div>
 

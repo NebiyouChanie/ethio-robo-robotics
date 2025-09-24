@@ -3,9 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #0f172a;
-  --primary: #003399; /* Deep Blue */
-  --secondary: #00C853; /* Bright Green */
-  --accent: #ffb300; /* Orange/Yellow */
+  --primary: #2D3581; /* Brand Blue */
+  --secondary: #ED2124; /* Brand Red */
+  --accent: #ffb300; /* Orange/Yellow (optional accent) */
 }
 
 @theme inline {
@@ -102,14 +102,25 @@ body {
 /* Force-light-mode exceptions for overlay text on image cards */
 .theme-light .force-white { color: #ffffff !important; }
 .theme-light .force-gray-100 { color: #f5f5f5 !important; }
+
+/* Brand gradient utilities */
+.brand-gradient {
+  background-image: linear-gradient(to right, var(--primary), var(--secondary));
+}
+.brand-text {
+  background-image: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+}
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #0f172a;
-  --primary: #003399; /* Deep Blue */
-  --secondary: #00C853; /* Bright Green */
-  --accent: #ffb300; /* Orange/Yellow */
+  --primary: #2D3581; /* Brand Blue */
+  --secondary: #ED2124; /* Brand Red */
+  --accent: #ffb300; /* Orange/Yellow (optional accent) */
 }
 
 @theme inline {

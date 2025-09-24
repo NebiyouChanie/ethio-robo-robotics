@@ -3,7 +3,7 @@ export default function HeroSection(){
         <section className="py-12 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
-            <div className="text-sm text-cyan-400 tracking-wider mb-2" >TRUSTED BY</div>
+            <div className="text-sm brand-text tracking-wider mb-2" >TRUSTED BY</div>
             <h3 className="text-2xl font-medium" >Partners and Institutions</h3>
           </div>
           <div className="logo-strip relative border border-gray-800 rounded-xl bg-gray-900/40">

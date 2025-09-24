@@ -7,24 +7,24 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <div className="text-cyan-400 font-bold text-xl mb-3">ETHIO ROBO ROBOTICS</div>
+            <div className="font-bold text-xl mb-3 brand-text">ETHIO ROBO ROBOTICS</div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Building Ethiopia's future innovators through practical robotics education, competitions, and teacher training.
             </p>
             <div className="flex items-center gap-4 mt-4">
-              <a href="https://t.me/ethioroboroboticsofficial" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors">
+              <a href="https://t.me/ethioroboroboticsofficial" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--primary)] transition-colors">
                 <Send className="w-5 h-5" />
               </a>
-              <a href="https://vm.tiktok.com/ZMSfrfVe9/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors">
+              <a href="https://vm.tiktok.com/ZMSfrfVe9/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--primary)] transition-colors">
                 <Music2 className="w-5 h-5" />
               </a>
-              <a href="https://www.facebook.com/share/17z9cdnZKc/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors">
+              <a href="https://www.facebook.com/share/17z9cdnZKc/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--primary)] transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="http://youtube.com/0" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors">
+              <a href="http://youtube.com/0" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--primary)] transition-colors">
                 <Youtube className="w-5 h-5" />
               </a>
-              <a href="https://www.instagram.com/ethiorobotics?igsh=MTIyaGR6Nm93Mmpubw==" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors">
+              <a href="https://www.instagram.com/ethiorobotics?igsh=MTIyaGR6Nm93Mmpubw==" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--primary)] transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
@@ -34,11 +34,11 @@ export default function Footer() {
           <div>
             <div className="text-white font-semibold mb-4">Quick Links</div>
             <ul className="space-y-3 text-sm">
-              <li><a href="/" className="text-gray-400 hover:text-cyan-400 transition-colors">Home</a></li>
-              <li><a href="/competitions" className="text-gray-400 hover:text-cyan-400 transition-colors">Competitions</a></li>
-              <li><a href="/shop" className="text-gray-400 hover:text-cyan-400 transition-colors">Shop</a></li>
-              <li><a href="/about" className="text-gray-400 hover:text-cyan-400 transition-colors">About Us</a></li>
-              <li><a href="/contact" className="text-gray-400 hover:text-cyan-400 transition-colors">Contact Us</a></li>
+              <li><a href="/" className="text-gray-400 hover:text-[var(--primary)] transition-colors">Home</a></li>
+              <li><a href="/competitions" className="text-gray-400 hover:text-[var(--primary)] transition-colors">Competitions</a></li>
+              <li><a href="/shop" className="text-gray-400 hover:text-[var(--primary)] transition-colors">Shop</a></li>
+              <li><a href="/about" className="text-gray-400 hover:text-[var(--primary)] transition-colors">About Us</a></li>
+              <li><a href="/contact" className="text-gray-400 hover:text-[var(--primary)] transition-colors">Contact Us</a></li>
             </ul>
           </div>
 
@@ -47,11 +47,11 @@ export default function Footer() {
             <div className="text-white font-semibold mb-4">Contact</div>
             <ul className="space-y-3 text-sm mb-6">
               <li className="flex items-start gap-3">
-                <Mail className="w-4 h-4 text-cyan-400 mt-0.5" />
+                <Mail className="w-4 h-4 text-[var(--primary)] mt-0.5" />
                 <span className="text-gray-400">ethiorobo@gmail.com</span>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 text-cyan-400 mt-0.5" />
+                <Phone className="w-4 h-4 text-[var(--primary)] mt-0.5" />
                 <span className="text-gray-400">+251-911675401</span>
               </li>
             </ul>
@@ -62,19 +62,19 @@ export default function Footer() {
             <div className="text-white font-semibold mb-4">Locations</div>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-cyan-400 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[var(--primary)] mt-0.5" />
                 <span className="text-gray-400">Bole Reality Plaza, 12th Floor</span>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-cyan-400 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[var(--primary)] mt-0.5" />
                 <span className="text-gray-400">CMC (Addis International Convention Center)</span>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-cyan-400 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[var(--primary)] mt-0.5" />
                 <span className="text-gray-400">Bole TK Building, 1st Floor</span>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-cyan-400 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[var(--primary)] mt-0.5" />
                 <span className="text-gray-400">Bisrate Gabriel, International Tennis Club, 3rd Floor</span>
               </li>
             </ul>

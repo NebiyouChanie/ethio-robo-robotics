@@ -5,11 +5,11 @@ export default function CompitionSection() {
     <section className="py-20 px-4 bg-gray-800/50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <div className="text-sm text-cyan-400 tracking-wider mb-4">
+          <div className="text-sm brand-text tracking-wider mb-4">
             COMPETITIONS
           </div>
           <h2 className="text-4xl lg:text-5xl font-medium mb-6">
-            A Platform for <span className="text-cyan-400">Excellence</span>
+            A Platform for <span className="brand-text">Excellence</span>
           </h2>
           <p className="text-gray-300 leading-relaxed max-w-4xl mx-auto">
             From local events to the world stage, our competitions are
