@@ -1,9 +1,51 @@
 'use client'
 
-
+import { useState } from 'react'
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react"
+import { toast } from 'sonner'
+import { z } from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+const schema = z.object({
+  name: z.string().trim().min(1, 'Full Name is required'),
+  email: z.string().trim().min(1, 'Email is required').email('Enter a valid email address'),
+  subject: z.string().trim().min(1, 'Subject is required').min(3, 'Subject must be at least 3 characters'),
+  message: z.string().trim().min(1, 'Message is required').min(10, 'Message must be at least 10 characters'),
+})
+
+type ContactFormValues = z.infer<typeof schema>
 
 export default function ContactPage() {
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<ContactFormValues>({
+    resolver: zodResolver(schema),
+    defaultValues: { name: '', email: '', subject: '', message: '' }
+  })
+
+  const onSubmit = async (values: ContactFormValues) => {
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values)
+      })
+      if (!res.ok) {
+        let payload: any = {}
+        try { payload = await res.json() } catch {}
+        if (res.status === 400 && payload?.error) {
+          toast.error(payload.error)
+        } else {
+          toast.error('Something went wrong')
+          console.error('Contact form submit failed', { status: res.status, payload })
+        }
+        return
+      }
+      toast.success('Message sent! We will get back to you shortly.')
+      reset()
+    } finally {
+      // no-op; isSubmitting is managed by react-hook-form if we return a promise
+    }
+  }
   return (
     <div className="min-h-screen bg-gray-900 text-white">
 
@@ -89,28 +131,32 @@ export default function ContactPage() {
 
           {/* Form */}
           <div className="lg:col-span-2 pb-16">
-            <form className="bg-gray-800 p-8 rounded-xl border border-gray-700 space-y-6">
+            <form className="bg-gray-800 p-8 rounded-xl border border-gray-700 space-y-6" onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm text-gray-400 mb-2">Full Name</label>
-                  <input className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-cyan-500" />
+                  <input {...register('name')} className={`w-full px-4 py-3 bg-gray-900 border rounded-lg text-white focus:outline-none focus:border-cyan-500 ${errors.name ? 'border-red-500' : 'border-gray-700'}`} />
+                  {errors.name && <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>}
                 </div>
                 <div>
                   <label className="block text-sm text-gray-400 mb-2">Email</label>
-                  <input type="email" className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-cyan-500" />
+                  <input type="email" {...register('email')} className={`w-full px-4 py-3 bg-gray-900 border rounded-lg text-white focus:outline-none focus:border-cyan-500 ${errors.email ? 'border-red-500' : 'border-gray-700'}`} />
+                  {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email.message}</p>}
                 </div>
               </div>
               <div>
                 <label className="block text-sm text-gray-400 mb-2">Subject</label>
-                <input className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-cyan-500" />
+                 <input {...register('subject')} className={`w-full px-4 py-3 bg-gray-900 border rounded-lg text-white focus:outline-none focus:border-cyan-500 ${errors.subject ? 'border-red-500' : 'border-gray-700'}`} />
+                 {errors.subject && <p className="mt-1 text-sm text-red-400">{errors.subject.message}</p>}
               </div>
               <div>
                 <label className="block text-sm text-gray-400 mb-2">Message</label>
-                <textarea rows={6} className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-cyan-500" />
+                 <textarea rows={6} {...register('message')} className={`w-full px-4 py-3 bg-gray-900 border rounded-lg text-white focus:outline-none focus:border-cyan-500 ${errors.message ? 'border-red-500' : 'border-gray-700'}`} />
+                 {errors.message && <p className="mt-1 text-sm text-red-400">{errors.message.message}</p>}
               </div>
-              <button type="button" className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+              <button type="submit" disabled={isSubmitting} className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 disabled:opacity-60 text-white px-6 py-3 rounded-lg font-medium transition-colors">
                 <Send className="w-4 h-4" />
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
