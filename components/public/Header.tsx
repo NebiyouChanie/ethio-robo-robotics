@@ -1,8 +1,9 @@
 "use client"
 
 import { ShoppingCart, Sun, Moon, ArrowDown, ChevronDown, Menu, X } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 interface HeaderProps {
   currentPage?: string
@@ -11,7 +12,27 @@ interface HeaderProps {
 }
 
 export default function Header({ currentPage = "home", showCart = false, cartItems = 0 }: HeaderProps) {
-  const isActive = (page: string) => currentPage === page
+  const pathname = usePathname() || "/"
+
+  // Object-based nav model
+  const mainLinks = useMemo(() => ([
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "Competitions", href: "/competitions" },
+    { label: "Blogs & Events", href: "/news" },
+    { label: "Contact Us", href: "/contact" },
+  ]), [])
+
+  const servicesLinks = useMemo(() => ([
+    { label: "Services", href: "/services" },
+    { label: "Programs", href: "/programs" },
+    { label: "Shop", href: "/shop" },
+  ]), [])
+
+  const isActiveHref = (href: string | string[]) => {
+    const hrefs = Array.isArray(href) ? href : [href]
+    return hrefs.some(h => h === "/" ? pathname === "/" : pathname.startsWith(h))
+  }
 
   const [isLight, setIsLight] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
@@ -56,18 +77,16 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center space-x-8">
-          <a 
-            href="/" 
-            className={`cursor-pointer transition-colors ${isActive('home') ? 'text-cyan-400 font-medium' : 'text-white hover:text-cyan-400'}`}
-          >
-            Home
-          </a>
-          <a 
-            href="/about" 
-            className={`cursor-pointer transition-colors ${isActive('about') ? 'text-cyan-400 font-medium' : 'text-white hover:text-cyan-400'}`}
-          >
-            About Us
-          </a>
+          {mainLinks.slice(0, 2).map(link => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`cursor-pointer transition-colors ${isActiveHref(link.href) ? 'text-cyan-400 font-medium' : 'text-white hover:text-cyan-400'}`}
+            >
+              {link.label}
+            </Link>
+          ))}
+
           <div
             className="relative"
             onMouseEnter={() => setServicesOpen(true)}
@@ -76,7 +95,7 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
             <button
               type="button"
               onClick={(e) => { e.preventDefault(); setServicesOpen((o) => !o) }}
-              className={`flex items-center gap-1 cursor-pointer transition-colors ${isActive('services') ? 'text-cyan-400 font-medium' : 'text-white hover:text-cyan-400'}`}
+              className={`flex items-center gap-1 cursor-pointer transition-colors ${isActiveHref(servicesLinks.map(s => s.href)) ? 'text-cyan-400 font-medium' : 'text-white hover:text-cyan-400'}`}
               aria-haspopup="menu"
               aria-expanded={servicesOpen}
             >
@@ -84,38 +103,30 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
               <ChevronDown size={18} />
             </button>
             {servicesOpen && (
-              <div className="absolute left-0 top-full mt-1 w-56 rounded-lg border border-gray-800 bg-gray-900 shadow-xl z-50">
+              <div className={`absolute left-0 top-full mt-1 w-56 rounded-lg border shadow-xl z-50 ${isLight ? 'border-gray-200 bg-white' : 'border-gray-800 bg-gray-900'}`}>
                 <div className="py-2">
-                  <Link href="/services" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white">Services</Link>
-                  <Link href="/programs" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white">Programs</Link>
-                  <Link href="/shop" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white">Shop</Link>
+                  {servicesLinks.map(s => (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      className={`block px-4 py-2 text-sm ${isLight ? 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' : 'text-gray-300 hover:bg-gray-800 hover:text-white'}`}
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
                 </div>
               </div>
             )}
           </div>
-          
-           
-          <a 
-            href="/competitions" 
-            className={`cursor-pointer transition-colors ${isActive('competitions') ? 'text-cyan-400 font-medium' : 'text-white hover:text-cyan-400'}`}
-          >
-            Competitions
-          </a>
-          
-          <a 
-            href="/news" 
-            className={`cursor-pointer transition-colors ${isActive('shop') ? 'text-cyan-400 font-medium' : 'text-white hover:text-cyan-400'}`}
-          >
-            Blogs & Events
-          </a>
-          
-          <a 
-            href="/contact" 
-            className={`cursor-pointer transition-colors ${isActive('shop') ? 'text-cyan-400 font-medium' : 'text-white hover:text-cyan-400'}`}
-          >
-            Contact Us
-          </a>
-
+          {mainLinks.slice(2).map(link => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`cursor-pointer transition-colors ${isActiveHref(link.href) ? 'text-cyan-400 font-medium' : 'text-white hover:text-cyan-400'}`}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
         
           <div className="hidden md:flex items-center gap-2">
@@ -123,7 +134,7 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
           <button onClick={toggleTheme} className="text-cyan-400 hover:text-white transition-colors" aria-label="Toggle theme">
             {isLight ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
           </button>
-          <Link href="/competitions/register">
+          <Link href="/register">
             <button className="px-8 py-2 rounded-lg relative cursor-pointer border border-cyan-400 text-cyan-400 hover:text-white transition-colors">
               Register Now
             </button>
@@ -147,7 +158,7 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
     {mobileOpen && (
       <div className="md:hidden bg-gray-900 border-b border-gray-800 px-4 py-3">
         <div className="max-w-7xl mx-auto flex flex-col gap-2">
-          <Link href="/" className={`py-2 ${isActive('home') ? 'text-cyan-400 font-medium' : 'text-white'}`} onClick={()=>setMobileOpen(false)}>Home</Link>
+          <Link href="/" className={`py-2 ${isActiveHref('/') ? 'text-cyan-400 font-medium' : 'text-white'}`} onClick={()=>setMobileOpen(false)}>Home</Link>
           {/* Services dropdown simplified for mobile */}
           <div className="border border-gray-800 rounded-lg overflow-hidden">
             <button type="button" className="w-full flex items-center justify-between px-4 py-2 text-white" onClick={()=>setServicesOpen((o)=>!o)}>
@@ -155,17 +166,26 @@ export default function Header({ currentPage = "home", showCart = false, cartIte
               <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
             </button>
             {servicesOpen && (
-              <div className="bg-gray-900">
-                <Link href="/services" className="block px-4 py-2 text-sm text-gray-300" onClick={()=>setMobileOpen(false)}>Services</Link>
-                <Link href="/programs" className="block px-4 py-2 text-sm text-gray-300" onClick={()=>setMobileOpen(false)}>Programs</Link>
-                <Link href="/shop" className="block px-4 py-2 text-sm text-gray-300" onClick={()=>setMobileOpen(false)}>Shop</Link>
+              <div className={`${isLight ? 'bg-white' : 'bg-gray-900'}`}>
+                {servicesLinks.map(s => (
+                  <Link
+                    key={s.href}
+                    href={s.href}
+                    className={`block px-4 py-2 text-sm ${isLight ? 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' : 'text-gray-300 hover:bg-gray-800 hover:text-white'}`}
+                    onClick={()=>setMobileOpen(false)}
+                  >
+                    {s.label}
+                  </Link>
+                ))}
               </div>
             )}
           </div>
-          <Link href="/competitions" className={`py-2 text-white`} onClick={()=>setMobileOpen(false)}>Competitions</Link>
-          <Link href="/news" className={`py-2 text-white`} onClick={()=>setMobileOpen(false)}>Blogs & Events</Link>
-          <Link href="/contact" className={`py-2 text-white`} onClick={()=>setMobileOpen(false)}>Contact Us</Link>
-          <Link href="/competitions/register" className="mt-2">
+          {mainLinks.slice(2).map(link => (
+            <Link key={link.href} href={link.href} className={`py-2 ${isActiveHref(link.href) ? 'text-cyan-400 font-medium' : 'text-white'}`} onClick={()=>setMobileOpen(false)}>
+              {link.label}
+            </Link>
+          ))}
+          <Link href="/register" className="mt-2">
             <button className="w-full px-4 py-2 rounded-lg border border-cyan-400 text-cyan-400 hover:text-white">Register Now</button>
           </Link>
         </div>

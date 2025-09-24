@@ -176,7 +176,7 @@ export default function CompetitionsPage() {
           {/* Actions */}
           <div ref={refFriendActions} className={`flex items-center justify-center  mb-8 gap-4 animate-fade-up ${inViewFriendActions?.isIntersecting ? 'visible' : ''}`}>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="/competitions/register" className="w-full bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-medium transition-colors text-center">
+              <a href="/register" className="w-full bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-medium transition-colors text-center">
                 Register  Team
               </a>
                
@@ -236,7 +236,7 @@ export default function CompetitionsPage() {
           {/* Actions */}
           <div ref={refArcActions} className={`flex items-center justify-center  mb-8 gap-4 animate-fade-up ${inViewArcActions?.isIntersecting ? 'visible' : ''}`}>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="/competitions/register" className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-medium transition-colors text-center">
+              <a href="/register" className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-medium transition-colors text-center">
                 Register  Team
               </a>
               <a href="/one.pdf" download className="border border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white px-6 py-3 rounded-lg font-medium transition-colors text-center">
@@ -297,7 +297,7 @@ export default function CompetitionsPage() {
           {/* Actions */}
           <div ref={refVexActions} className={`flex items-center justify-center  mb-8 gap-4 animate-fade-up ${inViewVexActions?.isIntersecting ? 'visible' : ''}`}>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="/competitions/register" className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-medium transition-colors text-center">
+              <a href="/register" className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-medium transition-colors text-center">
                 Register  Team
               </a>
               <a href="/one.pdf" download className="border border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white px-6 py-3 rounded-lg font-medium transition-colors text-center">
