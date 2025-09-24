@@ -8,6 +8,7 @@ import MultiImageUpload from '@/components/MultiImageUpload'
 const MdEditor = dynamic(() => import('react-markdown-editor-lite'), { ssr: false }) as any
 import 'react-markdown-editor-lite/lib/index.css'
 import ReactMarkdown from 'react-markdown'
+import { toast } from 'sonner'
 
 type InitialPost = {
   id?: number
@@ -38,7 +39,7 @@ export default function PostForm({ initial }: { initial?: InitialPost }) {
       const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title, slug, body, imageUrl, images: gallery }) })
       if (!res.ok) {
         const err = await res.json().catch(() => ({} as any))
-        alert(err?.error || 'Failed to save post')
+        toast.error(err?.error || 'Failed to save post')
         return
       }
       await res.json()

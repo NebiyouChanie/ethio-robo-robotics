@@ -2,14 +2,13 @@ import Link from 'next/link'
 import { prisma } from '@/lib/prisma'
 import type { Post } from '@prisma/client'
 async function getPosts(): Promise<Post[]> {
-  // @ts-expect-error Prisma client might be stale during dev; generated types will include isPublished
   return prisma.post.findMany({ where: { isPublished: true }, orderBy: { createdAt: 'desc' } })
 }
 
 export default async function NewsListPage() {
   const posts = await getPosts()
   return (
-    <section className="py-20 px-4">
+    <section className="py-20 px-4 bg-gray-900">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
           <div className="text-sm text-cyan-400 tracking-wider mb-2">NEWS</div>

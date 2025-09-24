@@ -7,7 +7,14 @@ export async function GET(req: NextRequest) {
     const published = searchParams.get('published')
     const where = published === 'true' ? { isPublished: true } : undefined
     const posts = await prisma.post.findMany({ where, orderBy: { createdAt: 'desc' }, include: { images: true } })
-    return NextResponse.json(posts)
+    
+    // Add featuredImageIndex to each post (always 0 since first image is featured)
+    const postsWithFeaturedIndex = posts.map(post => ({
+      ...post, 
+      featuredImageIndex: 0
+    }))
+    
+    return NextResponse.json(postsWithFeaturedIndex)
   } catch (error) {
     return NextResponse.json({ error: 'Failed to fetch posts' }, { status: 500 })
   }
@@ -15,12 +22,30 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    const { title, slug, body, imageUrl, images } = await req.json()
+    const { title, slug, body, images } = await req.json()
     if (!title || !slug || !body) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
-    const post = await prisma.post.create({ data: { title, slug, body, imageUrl, images: images && Array.isArray(images) ? { create: images.map((url: string) => ({ url })) } : undefined } })
-    return NextResponse.json(post, { status: 201 })
+    
+    // Get the featured image URL from the first image in the array
+    const featuredImageUrl = images && Array.isArray(images) && images.length > 0 
+      ? images[0] 
+      : null
+    
+    const post = await prisma.post.create({ 
+      data: { 
+        title, 
+        slug, 
+        body, 
+        imageUrl: featuredImageUrl,
+        images: images && Array.isArray(images) ? { 
+          create: images.map((url: string) => ({ 
+            url
+          })) 
+        } : undefined 
+      } 
+    })
+    return NextResponse.json({ ...post, featuredImageIndex: 0 }, { status: 201 })
   } catch (error: any) {
     console.error('POST /api/posts error:', error)
     if (error?.code === 'P2002') {

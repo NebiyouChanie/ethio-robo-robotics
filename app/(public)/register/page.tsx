@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from 'react'
+import { toast } from 'sonner'
 
 export default function RegisterPage() {
   const [form, setForm] = useState({
@@ -19,17 +20,17 @@ export default function RegisterPage() {
   const onChange = (e: any) => setForm({ ...form, [e.target.name]: e.target.value })
   const onSubmit = async (e: any) => {
     e.preventDefault()
-    if (!form.division) { alert('Please select a program/division'); return }
+    if (!form.division) { toast.error('Please select a program/division'); return }
     setSubmitting(true)
     try {
       const payload = { ...form, teamSize: form.teamSize ? Number(form.teamSize) : undefined }
       const res = await fetch('/api/registrations', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
       if (!res.ok) {
         const err = await res.json().catch(() => ({} as any))
-        alert(err?.error || 'Failed to register')
+        toast.error(err?.error || 'Failed to register')
         return
       }
-      alert('Registered successfully!')
+      toast.success('Registered successfully!')
       setForm({ teamName: '', contactName: '', email: '', phone: '', school: '', city: '', country: '', division: '', teamSize: '', message: '' })
     } finally {
       setSubmitting(false)

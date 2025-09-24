@@ -10,7 +10,7 @@ import ShopTeaser from "@/components/public/ShopTeaser";
 
 export default function Home() {
   return (
-    <div>
+    <div  className=" bg-gray-900 text-white">
       <HeroSection />
       <WhoWeAreSection />
       <ServicesSection />

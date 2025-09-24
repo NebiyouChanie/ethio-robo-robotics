@@ -4,6 +4,7 @@ import { useState } from "react"
 import Header from "../../../components/Header"
 import Footer from "../../../components/Footer"
 import { Plus, Trash2, Send } from "lucide-react"
+import { toast } from 'sonner'
 
 type Contestant = {
   name: string
@@ -45,7 +46,7 @@ export default function ArcRegistrationPage() {
     const payload = { teamName, level, coach, teamLeader, note, contestants }
     // Placeholder: you can replace with an API call
     console.log("ARC Registration Payload", payload)
-    alert("Registration captured locally. Connect an API to submit.")
+    toast.info("Registration captured locally. Connect an API to submit.")
   }
 
   return (

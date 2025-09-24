@@ -22,16 +22,17 @@ model admin {
 }
 
 model Post {
-  id          Int         @id @default(autoincrement())
-  title       String
-  slug        String      @unique
-  body        String
-  imageUrl    String?
-  isDraft     Boolean     @default(true)
-  isPublished Boolean     @default(false)
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-  images      PostImage[]
+  id                 Int         @id @default(autoincrement())
+  title              String
+  slug               String      @unique
+  body               String
+  imageUrl           String?
+  featuredImageIndex Int         @default(0)
+  isDraft            Boolean     @default(true)
+  isPublished        Boolean     @default(false)
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
+  images             PostImage[]
 }
 
 model Registration {

@@ -1,6 +1,6 @@
 export default function ShopPage() {
   return (
-    <section className="py-20 px-4">
+    <section className="py-20 px-4  bg-gray-900 text-white">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl lg:text-5xl font-medium mb-4">Robotics & Electronics Shop</h1>

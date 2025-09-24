@@ -3,7 +3,12 @@
 import {
   BookOpen,
   Bot,
-  SquareTerminal
+  SquareTerminal,
+  FileText,
+  Plus,
+  List,
+  Users,
+  Settings
 } from "lucide-react"
 import * as React from "react"
 
@@ -18,64 +23,60 @@ import {
 } from "@/components/ui/sidebar"
 import Image from "next/image"
 
-// This is sample data.
+// Navigation data for admin sidebar
 const data = {
-   
-   
   navMain: [
     {
-      title: "Teams",
-      url: "#",
-      icon: SquareTerminal,
+      title: "Dashboard",
+      url: "/admin",
+      icon: Bot,
       isActive: true,
-      items: [
-        {
-          title: "Register Team",
-          url: "#",
-        },
-      ],  
     },
     {
-      title: "Blogs & Announcements", 
-      url: "/admin/blogs-and-announcements",
+      title: "Posts Management", 
+      url: "/admin/post",
       icon: BookOpen,
       items: [
         {
-          title: "Create Blog",
-          url: "/admin/blogs-and-announcements/create-blog",
+          title: "All Posts",
+          url: "/admin/post",
         },
         {
-          title: "Create Announcement",
-          url: "/admin/blogs-and-announcements/create-announcement",
-        },
-        {
-          title: "Blogs",
-          url: "/admin/blogs-and-announcements/blogs",
+          title: "Create New Post",
+          url: "/admin/post/add",
         },
       ],
     },
-     
-     
+    {
+      title: "Registrations",
+      url: "/admin/registrations",
+      icon: Users,
+      items: [
+        {
+          title: "View Registrations",
+          url: "/admin/registrations",
+        },
+      ],
+    },
   ],
-  
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible="icon" className="bg-gray-900 border-r border-gray-800" {...props}>
       <SidebarHeader>
-        <div className="flex items-center justify-start gap-4 px-4 border-b border-gray-200 py-4">
+        <div className="flex items-center justify-start gap-4 px-4 border-b border-gray-800 py-4">
           <Image src="/images/logo.png" alt="logo" width={50} height={50} />
           <div className="flex flex-col">
-          <h1 className="text-lg font-medium -mb-1">Admin</h1>
-          <h1 className="text-sm font-medium">Dashboard</h1>
+          <h1 className="text-lg font-medium -mb-1 text-white">Admin</h1>
+          <h1 className="text-sm font-medium text-gray-300">Dashboard</h1>
           </div>
         </div>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="bg-gray-900">
         <NavMain items={data.navMain} />
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className="bg-gray-900 border-t border-gray-800">
         <NavUser  />
       </SidebarFooter>
       <SidebarRail />
