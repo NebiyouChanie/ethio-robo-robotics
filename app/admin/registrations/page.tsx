@@ -1,30 +1,6 @@
 import Link from 'next/link'
-import { headers } from 'next/headers'
 import RegistrationsTableClient from '@/components/admin/RegistrationsTableClient'
-
-function getBaseUrl() {
-  const h = headers()
-  const host = h.get('x-forwarded-host') || h.get('host') || 'localhost:3000'
-  const proto = h.get('x-forwarded-proto') || 'http'
-  return `${proto}://${host}`
-}
-
-async function fetchRegs(query: string) {
-  const base = getBaseUrl()
-  try {
-    const res = await fetch(`${base}/api/registrations?${query}`, { cache: 'no-store' })
-    const data = await res.json()
-    if (!res.ok) return { items: [], total: 0, page: 1, pageSize: 10 }
-    return {
-      items: Array.isArray(data?.items) ? data.items : [],
-      total: Number(data?.total || 0),
-      page: Number(data?.page || 1),
-      pageSize: Number(data?.pageSize || 10),
-    }
-  } catch {
-    return { items: [], total: 0, page: 1, pageSize: 10 }
-  }
-}
+import { prisma } from '@/lib/prisma'
 
 export default async function AdminRegistrationsPage({ searchParams }: { searchParams: Record<string, string | string[] | undefined> }) {
   const page = Number(searchParams.page || '1')
@@ -33,13 +9,31 @@ export default async function AdminRegistrationsPage({ searchParams }: { searchP
   const from = String(searchParams.from || '')
   const to = String(searchParams.to || '')
 
-  const qs = new URLSearchParams()
-  qs.set('page', String(page))
-  qs.set('pageSize', String(pageSize))
-  if (program) qs.set('program', program)
-  if (from) qs.set('from', from)
-  if (to) qs.set('to', to)
-  const { items: registrations = [], total = 0 } = await fetchRegs(qs.toString())
+  // Build where clause (same logic as API)
+  const where: any = {}
+  if (program) {
+    const trimmed = program.trim()
+    if (trimmed.toUpperCase() === 'ARC') {
+      where.division = { startsWith: 'ARC -' }
+    } else {
+      where.division = trimmed
+    }
+  }
+  if (from || to) {
+    where.createdAt = {}
+    if (from) where.createdAt.gte = new Date(from)
+    if (to) where.createdAt.lte = new Date(to)
+  }
+
+  const [total, registrations] = await Promise.all([
+    prisma.registration.count({ where }),
+    prisma.registration.findMany({
+      where,
+      orderBy: { createdAt: 'desc' },
+      skip: (page - 1) * pageSize,
+      take: pageSize,
+    })
+  ])
 
   return (
     <div className="max-w-7xl mx-auto pr-6">
