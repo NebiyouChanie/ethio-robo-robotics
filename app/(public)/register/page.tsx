@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
+import { Section } from 'lucide-react'
 
 type ProgramKey = 'VEX_IQ' | 'VEX_V5' | 'PROGRAMMING' | 'ARC'
 
@@ -156,15 +157,15 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-5xl font-semibold">Get involved to <span className="text-cyan-400">Design, Build, and Program!</span></h1>
-            <p className="text-gray-300 mt-2">Register for our comprehensive robotics programs and join thousands of students who are building the technology of tomorrow today.</p>
+            <h1 className="text-5xl font-medium max-w-xl mx-auto">Get involved to <span className="text-cyan-400">Design, Build, and Program!</span></h1>
+            <p className="text-gray-300 mt-4 max-w-3xl mx-auto">Register for our comprehensive robotics programs and join thousands of students who are building the technology of tomorrow today.</p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Program selector */}
-            <div className="space-y-6">
+          <div className="space-y-6 mb-8">
+            <div className="text-sm text-gray-400">Choose your program</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {([
                 { key: 'VEX_IQ', label: 'Elementary & Middle School Level', sub: 'VEX IQ' },
                 { key: 'VEX_V5', label: 'High School to College & University Level', sub: 'VEX V5' },
@@ -181,9 +182,10 @@ export default function RegisterPage() {
                 )
               })}
             </div>
+            </div>
 
             {/* Form panel */}
-            <div className="lg:col-span-2">
+            <div className="">
               <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
                 {program !== 'ARC' ? (
                   <>
@@ -317,7 +319,6 @@ export default function RegisterPage() {
               </div>
             </div>
           </div>
-        </div>
       </section>
     </div>
   )
