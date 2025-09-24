@@ -9,15 +9,23 @@ export default function HeroSection(){
           <div className="logo-strip relative border border-gray-800 rounded-xl bg-gray-900/40">
             <div className="marquee gap-10 py-6 px-4">
               {[
-                { src: "/images/partners/ministry.png", name: "Ministry of Innovation & Technology", since: "Since 2022" },
-                { src: "/images/partners/vex.png", name: "VEX Robotics", since: "Since 2016" },
-                { src: "/images/partners/enjoy-ai.png", name: "ENJOY AI", since: "Since 2024" },
-                { src: "/images/partners/university.png", name: "University Partners", since: "Since 2020" },
+                { src: "/images/partners/minstry%20of%20inovation%20and%20technology.png", name: "Ministry of Innovation & Technology", since: "Since 2021/22" },
+                { src: "/images/partners/vex.webp", name: "VEX Robotics", since: "Since 2015/16" },
+                { src: "/images/partners/ethiopian_airlines.png", name: "Ethiopian Airlines", since: "Since 2022/23" },
+                { src: "/images/partners/ethio-tele.png", name: "Ethio Telecom", since: "Since 2024/25" },
+                { src: "/images/partners/aau.png", name: "Addis Ababa University", since: "Since 2024/25" },
+                { src: "/images/partners/adama%20scienc%20and%20techology%20university.png", name: "Adama Science & Technology University", since: "Since 2024/25" },
+                { src: "/images/partners/university%20of%20gonadar.png", name: "University of Gondar", since: "Since 2025/26" },
+                { src: "/images/partners/Tis%20abay%20collage.png", name: "Tis Abay College", since: "Since 2025/26" },
               ].concat([
-                { src: "/images/partners/ministry.png", name: "Ministry of Innovation & Technology", since: "Since 2022" },
-                { src: "/images/partners/vex.png", name: "VEX Robotics", since: "Since 2016" },
-                { src: "/images/partners/enjoy-ai.png", name: "ENJOY AI", since: "Since 2024" },
-                { src: "/images/partners/university.png", name: "University Partners", since: "Since 2020" },
+                { src: "/images/partners/minstry%20of%20inovation%20and%20technology.png", name: "Ministry of Innovation & Technology", since: "Since 2021/22" },
+                { src: "/images/partners/vex.webp", name: "VEX Robotics", since: "Since 2015/16" },
+                { src: "/images/partners/ethiopian_airlines.png", name: "Ethiopian Airlines", since: "Since 2024/23" },
+                { src: "/images/partners/ethio-tele.png", name: "Ethio Telecom", since: "Since 2024/25" },
+                { src: "/images/partners/aau.png", name: "Addis Ababa University", since: "Since 2024/25" },
+                { src: "/images/partners/adama%20scienc%20and%20techology%20university.png", name: "Adama Science & Technology University", since: "Since 2024/25" },
+                { src: "/images/partners/university%20of%20gonadar.png", name: "University of Gondar", since: "Since 2025/26" },
+                { src: "/images/partners/Tis%20abay%20collage.png", name: "Tis Abay College", since: "Since 2025/26" },
               ]).map((p, i) => (
                 <div key={i} className="shrink-0 w-56 h-28 rounded-xl bg-gray-800 border border-gray-700 flex flex-col items-center justify-center px-3 py-2 text-center">
                   <img src={p.src} alt={`${p.name} logo`} className="max-h-12 max-w-[160px] object-contain" />

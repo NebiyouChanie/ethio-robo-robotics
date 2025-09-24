@@ -14,13 +14,13 @@ export default function MotionCTA({ children, href, variant = "primary" }: { chi
       href={href}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={`inline-flex items-center gap-2 ${base} bg-[#2D3580] w-fit px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25 text-sm`}
+      className={`inline-flex items-center gap-2 ${base}  w-fit px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25 text-sm`}
     >
       <span
         aria-hidden
         className={`inline-flex text-white transition-transform duration-75 ease-in-out ${hovered ? 'animate-[spin_0.3s_linear_infinite]' : ''}`}
       >
-        <Cpu className="w-4 h-4" />
+        <Cpu className="w-4 h-4 text-cyan-400" />
       </span>
       {children}
     </Comp>
