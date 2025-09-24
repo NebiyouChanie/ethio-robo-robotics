@@ -42,7 +42,7 @@ export default async function AdminRegistrationsPage({ searchParams }: { searchP
   const { items: registrations = [], total = 0 } = await fetchRegs(qs.toString())
 
   return (
-    <div className="w-full mx-auto p-6">
+    <div className="max-w-7xl mx-auto pr-6">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-semibold text-white">Team Registrations</h1>
         <div className="text-sm text-gray-400">
@@ -68,15 +68,14 @@ export default async function AdminRegistrationsPage({ searchParams }: { searchP
             <option value="20">20 / page</option>
             <option value="50">50 / page</option>
           </select>
-          <div className="flex items-center gap-2 justify-end col-span-1 lg:col-span-2">
+          <div className="flex items-center gap-2 col-span-1 lg:col-span-2">
             <button className="bg-cyan-500 hover:bg-cyan-600 text-white rounded px-4 py-2">Apply</button>
             <a href="/admin/registrations" className="border border-gray-600 rounded px-4 py-2 hover:bg-gray-700">Reset</a>
           </div>
         </form>
-        <div className="overflow-x-auto">
+        <div className="">
           <RegistrationsTableClient items={registrations} />
         </div>
-        
         {registrations.length === 0 && (
           <div className="text-center py-8 text-gray-400">
             No registrations found
