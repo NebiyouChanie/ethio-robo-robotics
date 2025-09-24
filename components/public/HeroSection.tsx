@@ -13,7 +13,7 @@ export default function HeroSection(){
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div ref={ref1} className={`space-y-6 animate-fade-up ${inView1?.isIntersecting ? 'visible' : ''}`}>
             <div className="text-sm brand-text tracking-wider">ROBOTICS INNOVATORS</div>
-            <h1 className="text-5xl lg:text-6xl font-medium leading-tight text-balance">
+            <h1 className="text-5xl lg:text-6xl font-semibold leading-tight text-balance">
               Success Begins <span className="brand-text">At Early Age</span> 
             </h1>
             <p className="text-gray-300 text- leading-relaxed max-w-lg">

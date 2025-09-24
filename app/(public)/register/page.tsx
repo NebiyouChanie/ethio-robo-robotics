@@ -1,11 +1,12 @@
 "use client"
 
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 import { Section } from 'lucide-react'
+import { useSearchParams } from 'next/navigation'
 
 type ProgramKey = 'VEX_IQ' | 'VEX_V5' | 'PROGRAMMING' | 'ARC'
 
@@ -52,7 +53,16 @@ const arcSchema = z.object({
 type ArcValues = z.infer<typeof arcSchema>
 
 export default function RegisterPage() {
+  const searchParams = useSearchParams()
   const [program, setProgram] = useState<ProgramKey>('VEX_IQ')
+
+  // Handle URL parameter for pre-selecting program
+  useEffect(() => {
+    const programParam = searchParams.get('program')
+    if (programParam && ['VEX_IQ', 'VEX_V5', 'PROGRAMMING', 'ARC'].includes(programParam)) {
+      setProgram(programParam as ProgramKey)
+    }
+  }, [searchParams])
 
   const programTitle = useMemo(() => {
     switch (program) {

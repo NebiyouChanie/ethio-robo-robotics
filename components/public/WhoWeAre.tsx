@@ -62,7 +62,7 @@ export default function WhoWeAreSection(){
     const [ref5, inView5] = useIntersectionObserver({ threshold: 0.1 });
 
     return (
-      <section className="py-16 px-4 section-alt">
+      <section className="py-32 px-4 section-alt">
         <div className="max-w-7xl mx-auto text-center">
           <h2 ref={ref1} className={`text-4xl lg:text-5xl font-medium mb-12 text-balance animate-fade-up ${inView1?.isIntersecting ? 'visible' : ''}`}>
             Impact in <span className="brand-text">Numbers</span>
@@ -70,28 +70,28 @@ export default function WhoWeAreSection(){
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div ref={ref2} className={`animate-fade-in ${inView2?.isIntersecting ? 'visible' : ''}`}>
-              <div className="text-3xl lg:text-5xl font-extrabold text-white mb-2">
+              <div className="text-3xl lg:text-5xl font- text-semibold white mb-2">
                 <Counter to={14} suffix="+" />
               </div>
               <div className="text-gray-300 text-sm">Years Inspiring Students</div>
             </div>
 
             <div ref={ref3} className={`animate-bounce-in ${inView3?.isIntersecting ? 'visible' : ''}`}>
-              <div className="text-3xl lg:text-5xl font-extrabold text-white mb-2">
+              <div className="text-3xl lg:text-5xl font- text-white mb-2">
                 <Counter to={2500} suffix="+" />
             </div>
               <div className="text-gray-300 text-sm">Students Trained</div>
             </div>
 
             <div ref={ref4} className={`animate-bounce-in ${inView4?.isIntersecting ? 'visible' : ''}`}>
-              <div className="text-3xl lg:text-5xl font-extrabold text-white mb-2">
+              <div className="text-3xl lg:text-5xl font- text-white mb-2">
                 <Counter to={45}  />
             </div>
               <div className="text-gray-300 text-sm">Competitions Hosted</div>
             </div>
 
             <div ref={ref5} className={`animate-bounce-in ${inView5?.isIntersecting ? 'visible' : ''}`}>
-              <div className="text-3xl lg:text-5xl font-extrabold text-white mb-2">
+              <div className="text-3xl lg:text-5xl font- text-white mb-2">
                 <Counter to={15} suffix="+"/>
             </div>
               <div className="text-gray-300 text-sm"> School STEM Labs Built </div>

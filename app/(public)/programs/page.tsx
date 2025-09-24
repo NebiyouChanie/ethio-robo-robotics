@@ -1,6 +1,6 @@
 'use client'
 
- 
+import Link from 'next/link'
 
 export default function ProgramsPage() {
   return (
@@ -29,13 +29,19 @@ export default function ProgramsPage() {
                 Introduction to robotics using VEX IQ platform. Students learn basic programming, mechanical design,
                 and problem-solving skills through engaging, hands-on activities.
               </p>
-              <div className="space-y-2 text-sm text-gray-300">
+              <div className="space-y-4">
                 <div className="flex gap-2 flex-wrap">
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">VEX IQ Kit Included</span>
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Basic Programming</span>
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Team Projects</span>
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Certificate</span>
                 </div>
+                <Link 
+                  href="/register?program=VEX_IQ"
+                  className="inline-block rounded-lg p-[1px] brand-gradient"
+                >
+                  <span className="block bg-gray-800 text-white hover:bg-gray-800/80 px-6 py-3 rounded-lg font-medium text-center">Register Now</span>
+                </Link>
               </div>
             </div>
             <div>
@@ -58,13 +64,19 @@ export default function ProgramsPage() {
                 Introduction to robotics using VEX V5 platform. Students learn programming, mechanical design, and
                 competition strategies while building progressively complex robots.
               </p>
-              <div className="space-y-2 text-sm text-gray-300">
+              <div className="space-y-4">
                 <div className="flex gap-2 flex-wrap">
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">VEX V5 Kit Included</span>
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Programming</span>
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Team Projects</span>
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Certificate</span>
                 </div>
+                <Link 
+                  href="/register?program=VEX_V5"
+                  className="inline-block rounded-lg p-[1px] brand-gradient"
+                >
+                  <span className="block bg-gray-800 text-white hover:bg-gray-800/80 px-6 py-3 rounded-lg font-medium text-center">Register Now</span>
+                </Link>
               </div>
             </div>
           </div>
@@ -81,13 +93,19 @@ export default function ProgramsPage() {
                 Advanced robotics with VEX V5 system. Complex programming, sensor integration, and competitive robotics
                 preparation with mentorship and project reviews.
               </p>
-              <div className="space-y-2 text-sm text-gray-300">
+              <div className="space-y-4">
                 <div className="flex gap-2 flex-wrap">
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">VEX V5 Access</span>
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Advanced Programming</span>
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Competition Prep</span>
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Mentorship</span>
                 </div>
+                <Link 
+                  href="/register?program=VEX_V5"
+                  className="inline-block rounded-lg p-[1px] brand-gradient"
+                >
+                  <span className="block bg-gray-800 text-white hover:bg-gray-800/80 px-6 py-3 rounded-lg font-medium text-center">Register Now</span>
+                </Link>
               </div>
             </div>
             <div>
@@ -110,13 +128,19 @@ export default function ProgramsPage() {
                 Comprehensive coding program covering Scratch, C++ and Python. Build a portfolio with real projects using
                 industry tools and best practices.
               </p>
-              <div className="space-y-2 text-sm text-gray-300">
+              <div className="space-y-4">
                 <div className="flex gap-2 flex-wrap">
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Multiple Languages</span>
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Hands-on Projects</span>
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Portfolio Building</span>
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Industry Tools</span>
                 </div>
+                <Link 
+                  href="/register?program=PROGRAMMING"
+                  className="inline-block rounded-lg p-[1px] brand-gradient"
+                >
+                  <span className="block bg-gray-800 text-white hover:bg-gray-800/80 px-6 py-3 rounded-lg font-medium text-center">Register Now</span>
+                </Link>
               </div>
             </div>
           </div>
@@ -133,13 +157,19 @@ export default function ProgramsPage() {
                 Elite training program for students preparing for national and international robotics competitions.
                 Includes professional coaching, competition entry, and travel guidance.
               </p>
-              <div className="space-y-2 text-sm text-gray-300">
+              <div className="space-y-4">
                 <div className="flex gap-2 flex-wrap">
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Elite Training</span>
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Competition Entry</span>
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Professional Coaching</span>
                   <span className="bg-primary border border-primary px-3 py-1.5 rounded-lg  text-sm">Travel Support</span>
                 </div>
+                <Link 
+                  href="/register?program=ARC"
+                  className="inline-block rounded-lg p-[1px] brand-gradient"
+                >
+                  <span className="block bg-gray-800 text-white hover:bg-gray-800/80 px-6 py-3 rounded-lg font-medium text-center">Register Team</span>
+                </Link>
               </div>
             </div>
             <div>
