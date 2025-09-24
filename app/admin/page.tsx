@@ -1,100 +1,43 @@
-"use client"
-
-import dynamic from 'next/dynamic'
-import { useRef, useState } from 'react'
-import { useRouter } from 'next/navigation'
-import MultiImageUpload from '@/components/MultiImageUpload'
-
-const MdEditor = dynamic(() => import('react-markdown-editor-lite'), { ssr: false }) as any
-import 'react-markdown-editor-lite/lib/index.css'
-import ReactMarkdown from 'react-markdown'
-import { toast } from 'sonner'
-
-export default function AdminCreatePost() {
-  const router = useRouter()
-  const editorRef = useRef<any>(null)
-  const [title, setTitle] = useState('')
-  const [slug, setSlug] = useState('')
-  const [body, setBody] = useState('')
-  const [images, setImages] = useState<string[]>([])
-  const [submitting, setSubmitting] = useState(false)
-  const [editingId, setEditingId] = useState<number | null>(null)
-  const [isDraft, setIsDraft] = useState(true)
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    
-    // Validate that at least one image is uploaded
-    if (images.length === 0) {
-      toast.error('Please upload at least one image')
-      return
-    }
-    
-    setSubmitting(true)
-    try {
-      const isEdit = !!editingId
-      const url = isEdit ? `/api/posts/${editingId}` : '/api/posts'
-      const method = isEdit ? 'PATCH' : 'POST'
-      const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title, slug, body, images }) })
-      if (!res.ok) {
-        const err = await res.json()
-        toast.error(err.error || 'Failed to create post')
-        return
-      }
-      await res.json()
-      router.refresh()
-      toast.success(isEdit ? 'Post updated' : 'Post created')
-      setTitle(''); setSlug(''); setBody(''); setImages([]); setIsDraft(true)
-      setEditingId(null)
-    } finally {
-      setSubmitting(false)
-    }
-  }
-
+export default function AdminPage() {
+  const cards = [
+    { title: 'Posts', desc: 'Create and manage blog posts and announcements', href: '/admin/post' },
+    { title: 'Registrations', desc: 'View and manage team registrations', href: '/admin/registrations' },
+  ]
 
   return (
-    <div className="max-w-7xl p-6 space-y-6 bg-gray-900 text-white">
-      <h1 className="text-2xl font-semibold text-white">Create Post</h1>
-      {/* If navigated with /admin?edit=ID, load post and prefill */}
-      {/* lightweight client-side fetch to populate form when editing */}
-      {typeof window !== 'undefined' && !editingId && new URLSearchParams(window.location.search).get('edit') && (
-        (() => { const id = Number(new URLSearchParams(window.location.search).get('edit')); if (id && !editingId) { setEditingId(id); fetch(`/api/posts/${id}`).then(r=>r.json()).then((p)=>{ setTitle(p.title||''); setSlug(p.slug||''); setBody(p.body||''); setImages(p.images?.map((img: any) => img.url) || []); }); } return null })()
-      )}
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" className="w-full px-3 py-2 rounded border bg-gray-800/50 border-cyan-500/40 focus:border-cyan-500 outline-none text-white placeholder-gray-400" />
-          <input value={slug} onChange={(e) => setSlug(e.target.value)} placeholder="slug-example" className="w-full px-3 py-2 rounded border bg-gray-800/50 border-cyan-500/40 focus:border-cyan-500 outline-none text-white placeholder-gray-400" />
-        </div>
+    <div className="p-6">
+      <div className="mb-6">
+        <h1 className="text-3xl font-semibold text-white">Welcome back</h1>
+        <p className="text-gray-400 mt-1">Use the quick links below to manage content and registrations.</p>
+      </div>
 
-        {/* Multiple Images Upload */}
-        <div className="space-y-4">
-          <div className="text-sm text-gray-400">Upload Images (1-10 images) - First image will be used as featured</div>
-          <MultiImageUpload values={images} onChange={setImages} />
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {cards.map((c) => (
+          <a key={c.title} href={c.href} className="block rounded-xl border border-gray-800 bg-gray-900/60 hover:bg-gray-900 transition p-5">
+            <div className="text-lg font-medium text-white">{c.title}</div>
+            <div className="text-sm text-gray-400 mt-1">{c.desc}</div>
+          </a>
+        ))}
+      </div>
 
-        <div className="grid grid-cols-1 gap-4">
-          <div>
-            <MdEditor
-              ref={editorRef}
-              value={body}
-              style={{ height: 400 }}
-              onChange={({ text }: any) => setBody(text)}
-              renderHTML={(text: string) => <ReactMarkdown>{text}</ReactMarkdown> as any}
-            />
+      <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div className="lg:col-span-2 rounded-xl border border-gray-800 bg-gray-900/60 p-5">
+          <div className="text-white font-medium mb-3">Getting Started</div>
+          <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">
+            <li>Use Posts to publish updates to the public site.</li>
+            <li>Registrations table supports filtering by program and date.</li>
+            <li>Export filtered registrations as CSV for reporting.</li>
+          </ul>
+        </div>
+        <div className="rounded-xl border border-gray-800 bg-gray-900/60 p-5">
+          <div className="text-white font-medium mb-3">Shortcuts</div>
+          <div className="flex flex-col gap-2 text-sm">
+            <a href="/admin/post/add" className="px-3 py-2 rounded border border-cyan-600 text-cyan-400 hover:bg-cyan-600/10">Create Post</a>
+            <a href="/admin/registrations/add" className="px-3 py-2 rounded border border-cyan-600 text-cyan-400 hover:bg-cyan-600/10">Add Registration</a>
+            <a href="/admin/registrations" className="px-3 py-2 rounded border border-gray-700 text-gray-300 hover:bg-gray-800">View Registrations</a>
           </div>
         </div>
-
-        <div className="flex gap-3">
-          <button type="submit" disabled={submitting} className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-2 rounded disabled:opacity-50 transition-colors">
-            {submitting ? (editingId ? 'Updating...' : 'Saving...') : (editingId ? 'Update' : 'Save Draft')}
-          </button>
-          <button type="button" disabled className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-2 rounded opacity-50 cursor-not-allowed" title="Publish toggle to be enabled once client is regenerated">
-            Publish
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
   )
 }
-
- 

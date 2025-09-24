@@ -22,6 +22,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import Image from "next/image"
+import Link from "next/link"
 
 // Navigation data for admin sidebar
 const data = {
@@ -63,6 +64,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" className="bg-gray-900 border-r border-gray-800 group" {...props}>
       <SidebarHeader>
+        {/* Logo and title */}
+        <Link href="/admin">  
         <div className="flex items-center justify-start gap-4 px-4 border-b border-gray-800 py-4 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-2">
           <Image src="/images/logo.png" alt="logo" width={50} height={50} />
           <div className="flex flex-col group-data-[collapsible=icon]:hidden">
@@ -70,6 +73,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <h1 className="text-sm font-medium text-gray-300">Dashboard</h1>
           </div>
         </div>
+        </Link>
       </SidebarHeader>
       <SidebarContent className="bg-gray-900">
         <NavMain items={data.navMain} />
