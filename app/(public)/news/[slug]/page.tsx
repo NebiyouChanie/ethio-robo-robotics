@@ -7,6 +7,8 @@ async function getPost(slug: string): Promise<(Post & { images: { url: string }[
   return prisma.post.findFirst({ where: { slug, isPublished: true }, include: { images: true } }) as Promise<(Post & { images: { url: string }[] }) | null>
 }
 
+export const dynamic = "force-dynamic";
+
 export default async function NewsDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const post = await getPost(slug)

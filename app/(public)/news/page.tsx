@@ -4,6 +4,7 @@ import type { Post } from '@prisma/client'
 async function getPosts(): Promise<Post[]> {
   return prisma.post.findMany({ where: { isPublished: true }, orderBy: { createdAt: 'desc' } })
 }
+export const dynamic = "force-dynamic";
 
 export default async function NewsListPage() {
   const posts = await getPosts()

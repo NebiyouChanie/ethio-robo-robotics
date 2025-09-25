@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { prisma } from '@/lib/prisma'
 import PostsTableClient from '@/components/admin/PostsTableClient'
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminPostsPage() {
   const posts = await prisma.post.findMany({ orderBy: { createdAt: 'desc' } })
   return (
