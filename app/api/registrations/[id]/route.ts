@@ -20,7 +20,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
     const body = await req.json()
     const data: any = {}
     // Whitelist known fields
-    const allowed = ['teamName','contactName','email','phone','school','city','country','division','teamSize','message','age','gender','street','region','education','nearest','state','postalCode','availableOn','whatsapp']
+    const allowed = ['teamName','contactName','email','phone','school','city','country','division','teamSize','age','gender','street','region','education','nearest','state','postalCode','availableOn','whatsapp']
     for (const k of allowed) if (k in body) data[k] = body[k]
     const reg = await prisma.registration.update({ where: { id }, data })
     return NextResponse.json(reg)

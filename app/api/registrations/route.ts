@@ -45,12 +45,12 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { teamName, contactName, email, phone, school, city, country, division, teamSize, message,
+    const { teamName, contactName, email, phone, school, city, country, division, teamSize,
       age, gender, street, region, education, nearest, state, postalCode, availableOn, whatsapp } = body
     if (!teamName || !contactName || !email || !phone || !division) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
-    const reg = await prisma.registration.create({ data: { teamName, contactName, email, phone, school, city, country, division, teamSize, message,
+    const reg = await prisma.registration.create({ data: { teamName, contactName, email, phone, school, city, country, division, teamSize,
       age, gender, street, region, education, nearest, state, postalCode, availableOn, whatsapp } })
     return NextResponse.json(reg, { status: 201 })
   } catch (e: any) {
