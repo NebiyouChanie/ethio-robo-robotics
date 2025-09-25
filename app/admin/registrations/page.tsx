@@ -2,12 +2,13 @@ import Link from 'next/link'
 import RegistrationsTableClient from '@/components/admin/RegistrationsTableClient'
 import { prisma } from '@/lib/prisma'
 
-export default async function AdminRegistrationsPage({ searchParams }: { searchParams: Record<string, string | string[] | undefined> }) {
-  const page = Number(searchParams.page || '1')
-  const pageSize = Number(searchParams.pageSize || '10')
-  const program = String(searchParams.program || '')
-  const from = String(searchParams.from || '')
-  const to = String(searchParams.to || '')
+export default async function AdminRegistrationsPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const resolvedSearchParams = await searchParams
+  const page = Number(resolvedSearchParams.page || '1')
+  const pageSize = Number(resolvedSearchParams.pageSize || '10')
+  const program = String(resolvedSearchParams.program || '')
+  const from = String(resolvedSearchParams.from || '')
+  const to = String(resolvedSearchParams.to || '')
 
   // Build where clause (same logic as API)
   const where: any = {}

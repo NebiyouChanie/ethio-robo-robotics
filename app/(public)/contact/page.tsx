@@ -30,7 +30,7 @@ export default function ContactPage() {
         body: JSON.stringify(values)
       })
       if (!res.ok) {
-        let payload: any = {}
+        let payload: { error?: string } = {}
         try { payload = await res.json() } catch {}
         if (res.status === 400 && payload?.error) {
           toast.error(payload.error)

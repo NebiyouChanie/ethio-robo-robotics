@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Send, Music2, Facebook, Youtube, Instagram } from "lucide-react"
+import Link from "next/link"
 
 export default function Footer() {
   return (
@@ -34,7 +35,7 @@ export default function Footer() {
           <div>
             <div className="text-white font-semibold mb-4">Quick Links</div>
             <ul className="space-y-3 text-sm">
-              <li><a href="/" className="text-gray-400 hover:text-[var(--primary)] transition-colors">Home</a></li>
+              <li><Link href="/" className="text-gray-400 hover:text-[var(--primary)] transition-colors">Home</Link></li>
               <li><a href="/competitions" className="text-gray-400 hover:text-[var(--primary)] transition-colors">Competitions</a></li>
               <li><a href="/shop" className="text-gray-400 hover:text-[var(--primary)] transition-colors">Shop</a></li>
               <li><a href="/about" className="text-gray-400 hover:text-[var(--primary)] transition-colors">About Us</a></li>

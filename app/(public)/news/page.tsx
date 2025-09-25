@@ -15,7 +15,7 @@ export default async function NewsListPage() {
           <h1 className="text-4xl lg:text-5xl font-medium">Latest <span className="brand-text">Posts</span></h1>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {(posts || []).map((p: any) => (
+          {(posts || []).map((p: Post) => (
             <article key={p.slug} className="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-cyan-500/50 transition-all" >
               <Link href={`/news/${p.slug}`} className="block group">
                 <div className="overflow-hidden rounded-lg border border-gray-700 mb-4">

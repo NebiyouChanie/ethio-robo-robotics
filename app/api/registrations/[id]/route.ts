@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
-export async function GET(_req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = Number(params.id)
+    const { id: idParam } = await params
+    const id = Number(idParam)
     const reg = await prisma.registration.findUnique({ where: { id } })
     if (!reg) return NextResponse.json({ error: 'Not found' }, { status: 404 })
     return NextResponse.json(reg)
@@ -12,9 +13,10 @@ export async function GET(_req: NextRequest, { params }: { params: { id: string 
   }
 }
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = Number(params.id)
+    const { id: idParam } = await params
+    const id = Number(idParam)
     const body = await req.json()
     const data: any = {}
     // Whitelist known fields
@@ -27,9 +29,10 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
   }
 }
 
-export async function DELETE(_req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = Number(params.id)
+    const { id: idParam } = await params
+    const id = Number(idParam)
     await prisma.registration.delete({ where: { id } })
     return NextResponse.json({ ok: true })
   } catch (e: any) {

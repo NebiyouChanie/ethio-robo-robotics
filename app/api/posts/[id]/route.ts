@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = Number(params.id)
+    const { id: idParam } = await params
+    const id = Number(idParam)
     const body = await req.json()
     const { title, slug, body: postBody, images, isPublished, isDraft } = body
     const data: any = {}
@@ -34,9 +35,10 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
   }
 }
 
-export async function GET(_req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = Number(params.id)
+    const { id: idParam } = await params
+    const id = Number(idParam)
     const post = await prisma.post.findUnique({ where: { id }, include: { images: true } })
     if (!post) return NextResponse.json({ error: 'Not found' }, { status: 404 })
     
@@ -47,9 +49,10 @@ export async function GET(_req: NextRequest, { params }: { params: { id: string 
   }
 }
 
-export async function DELETE(_req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = Number(params.id)
+    const { id: idParam } = await params
+    const id = Number(idParam)
     await prisma.post.delete({ where: { id } })
     return NextResponse.json({ ok: true })
   } catch (error: any) {

@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState, useEffect } from 'react'
+import { useMemo, useState, useEffect, Suspense } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -41,7 +41,7 @@ const arcSchema = z.object({
   country: z.string().trim().min(1, 'Country is required'),
   postalCode: z.string().trim().min(1, 'Postal code is required'),
   teamName: z.string().trim().min(1, 'Team name is required'),
-  numMembers: z.coerce.number().min(1, 'Number of members is required'),
+  numMembers: z.number().min(1, 'Number of members is required'),
   programChoice: z.enum(['VEX IQ', 'VEX V5']),
   availableDate: z.string().trim().min(1, 'Available date is required'),
   repName: z.string().trim().min(1, 'Representative name is required'),
@@ -52,7 +52,7 @@ const arcSchema = z.object({
 
 type ArcValues = z.infer<typeof arcSchema>
 
-export default function RegisterPage() {
+function RegisterPageContent() {
   const searchParams = useSearchParams()
   const [program, setProgram] = useState<ProgramKey>('VEX_IQ')
 
@@ -92,7 +92,7 @@ export default function RegisterPage() {
     }
   })
   const arcForm = useForm<ArcValues>({
-    resolver: zodResolver(arcSchema) as any,
+    resolver: zodResolver(arcSchema),
     defaultValues: {
       orgName: '',
     city: '',
@@ -100,7 +100,7 @@ export default function RegisterPage() {
     country: '',
       postalCode: '',
       teamName: '',
-      numMembers: 1,
+      numMembers: 1 as number,
       programChoice: undefined as unknown as 'VEX IQ' | 'VEX V5',
       availableDate: '',
       repName: '',
@@ -131,7 +131,7 @@ export default function RegisterPage() {
     }
       const res = await fetch('/api/registrations', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
       if (!res.ok) {
-      let data: any = {}
+      let data: { error?: string } = {}
       try { data = await res.json() } catch {}
       toast.error(data?.error || 'Failed to register')
         return
@@ -155,7 +155,7 @@ export default function RegisterPage() {
     }
     const res = await fetch('/api/registrations', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
     if (!res.ok) {
-      let data: any = {}
+      let data: { error?: string } = {}
       try { data = await res.json() } catch {}
       toast.error(data?.error || 'Failed to register')
       return
@@ -213,7 +213,7 @@ export default function RegisterPage() {
                       <div className="text-sm text-gray-400">Complete the form below to secure your spot in our programs</div>
                     </div>
 
-                    <form onSubmit={learnerForm.handleSubmit(submitLearner as any)} className="space-y-6">
+                    <form onSubmit={learnerForm.handleSubmit(submitLearner)} className="space-y-6">
                       <div>
                         <div className="text-sm brand-text font-medium mb-2">Personal Information</div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -340,6 +340,14 @@ export default function RegisterPage() {
       </div>
     </section>
     </div>
+  )
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gray-900 flex items-center justify-center"><div className="text-white">Loading...</div></div>}>
+      <RegisterPageContent />
+    </Suspense>
   )
 }
 

@@ -4,7 +4,7 @@ import type { Post } from '@prisma/client'
 import { SimpleCarousel } from '@/components/ui/simple-carousel'
 
 async function getPost(slug: string): Promise<(Post & { images: { url: string }[] }) | null> {
-  return prisma.post.findFirst({ where: { slug, isPublished: true }, include: { images: true } }) as any
+  return prisma.post.findFirst({ where: { slug, isPublished: true }, include: { images: true } }) as Promise<(Post & { images: { url: string }[] }) | null>
 }
 
 export default async function NewsDetailPage({ params }: { params: Promise<{ slug: string }> }) {

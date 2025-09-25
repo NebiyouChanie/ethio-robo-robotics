@@ -40,7 +40,7 @@ export async function signIn(data: { email: string; password: string }) {
     }
 
     // 4. Create session
-    await createSession(admin.email);
+    await createSession(admin.email, admin.email);
 
     // 5. Return success message
     return { success: true, message: 'Sign-in successful' };
