@@ -37,9 +37,9 @@ export default function ServicesSection(){
               desc: "We prepare students for the ARC robotics competition with elite training, professional coaching, competition entry, and full travel support." 
             }
             ].map((s, i) => (
-            <div key={i} className="bg-gray-800/60 p-8 rounded-2xl border border-gray-700 hover:border-[var(--primary)]/50 transition-all">
-              <div className="flex items-start gap-6">
-                <div className="w-14 h-14  rounded-xl flex items-center justify-center flex-shrink-0">{s.icon}</div>
+            <div key={i} className="bg-gray-800/60 lg:p-8 p-4 rounded-2xl border border-gray-700 hover:border-[var(--primary)]/50 transition-all">
+              <div className="flex items-start gap-6 ">
+                <div className="lg:w-14 lg:h-14 w-10 h-10  rounded-xl flex items-center justify-center flex-shrink-0">{s.icon}</div>
                 <div>
                   <h3 className="text-xl font-medium mb-3">{s.title}</h3>
                   <p className="text-gray-300 leading-relaxed">{s.desc}</p>

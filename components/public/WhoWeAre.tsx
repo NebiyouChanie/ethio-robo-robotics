@@ -62,7 +62,7 @@ export default function WhoWeAreSection(){
     const [ref5, inView5] = useIntersectionObserver({ threshold: 0.1 });
 
     return (
-      <section className="py-32 px-4 section-alt">
+      <section className="py-16 md:py-32 px-4 section-alt">
         <div className="max-w-7xl mx-auto text-center">
           <h2 ref={ref1} className={`text-4xl lg:text-5xl font-medium mb-12 text-balance animate-fade-up ${inView1?.isIntersecting ? 'visible' : ''}`}>
             Impact in <span className="brand-text">Numbers</span>

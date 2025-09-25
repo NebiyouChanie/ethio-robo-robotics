@@ -42,9 +42,9 @@ export default function ShopPage() {
             <li className="bg-gray-900/50 border border-gray-700 rounded-xl p-4">Bole Reality Plaza</li>
             <li className="bg-gray-900/50 border border-gray-700 rounded-xl p-4">Bisrate Gebriel</li>
           </ul>
-          <div className="mt-6">
-            <img src="/images/shop.JPG" alt="Our shop and equipment" className="w-full h-128 object-cover rounded-xl border border-gray-700" />
-          </div>
+        </div>
+        <div className="mt-6">
+          <img src="/images/shop.JPG" alt="Our shop and equipment" className="w-full lg:h-128 h-64 object-cover rounded-xl border border-gray-700" />
         </div>
 
         <div className="text-center mt-12">

@@ -59,18 +59,18 @@ export default function CompetitionsPage() {
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div ref={refIntro} className={`text-center mb-16 animate-fade-up ${inViewIntro?.isIntersecting ? 'visible' : ''}`}>
-            <div className="text-sm brand-text tracking-wider mb-4 hidden md:block">OUR COMPETITIONS</div>
+            <div className="text-sm brand-text tracking-wider mb-4">OUR COMPETITIONS</div>
             <h2 className="text-4xl lg:text-5xl font-medium mb-6">
               A Platform for <span className="brand-text">Excellence</span>
             </h2>
-            <p className="text-gray-300 leading-relaxed max-w-4xl mx-auto hidden md:block">
+            <p className="text-gray-300 leading-relaxed max-w-4xl mx-auto">
               We believe competition is a powerful catalyst for learning. Our events are
               dynamic, game-based engineering challenges where classroom STEM concepts are put to the ultimate test.
               Students learn invaluable lifelong skills in teamwork, leadership, communication, and perseverance.
             </p>
           </div>
 
-          <div ref={refMainGrid} className={`grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-12`}>
+          <div ref={refMainGrid} className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-12`}>
             <div className="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-cyan-500/50 transition-all">
               {/* <Trophy className="w-12 h-12 text-cyan-400 mb-6" /> */}
               <h3 className="text-xl font mb-4">African Robotics Championship</h3>
@@ -141,13 +141,13 @@ export default function CompetitionsPage() {
             <h2 className="text-4xl font-semibold mb-4">
               The <span className="brand-text">Friendship </span>  Competitions
             </h2>
-            <p className="text-gray-300 hidden md:block">For Schools & Communities in Addis Ababa</p>
+            <p className="text-gray-300">For Schools & Communities in Addis Ababa</p>
           </div>
 
           {/* Content grid with side image on large screens */}
           <div ref={refFriendGrid} className={`grid grid-cols-1 lg:grid-cols-4 gap-8 mb-12 items-stretch`}>
             {/* Left content cards */}
-            <div className="order-2 lg:order-1 lg:col-span-3 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div className="order-2 lg:order-1 lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
                 <Trophy className="w-12 h-12 mb-4" color="url(#brandGradient)"  />
                 <h3 className="text-xl font-semibold mb-3">About Frendship competitions</h3>
@@ -201,13 +201,13 @@ export default function CompetitionsPage() {
             <h2 className="text-4xl font-semibold mb-4">
               The <span className="brand-text">African Robotics</span> Championship
             </h2>
-            <p className="text-gray-300 hidden md:block">The Premier Robotics Event in Africa</p>
+            <p className="text-gray-300">The Premier Robotics Event in Africa</p>
           </div>
 
           {/* Content grid with side image on large screens */}
           <div ref={refArcGrid} className={`grid grid-cols-1 lg:grid-cols-4 gap-8 mb-12 items-stretch`}>
             {/* Left content cards */}
-            <div className="order-2 lg:order-1 lg:col-span-3 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div className="order-2 lg:order-1 lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
                 <Trophy className="w-12 h-12 mb-4" color="url(#brandGradient)"  />
                 <h3 className="text-xl font-semibold mb-3">About ARC</h3>
@@ -261,14 +261,14 @@ export default function CompetitionsPage() {
         <div className="max-w-7xl mx-auto">
           <div ref={refVexHead} className={`text-center mb-8 animate-fade-up ${inViewVexHead?.isIntersecting ? 'visible' : ''}`}>
             <h2 className="text-3xl font-semibold mb-4">VEX Robotics <span className="brand-text">Competitions</span></h2>
-            <p className="text-gray-300 hidden md:block">World’s leading international robotics competition program</p>
+            <p className="text-gray-300">World’s leading international robotics competition program</p>
           </div>
 
         
 
           {/* Content grid with side image on large screens */}
           <div ref={refVexGrid} className={`grid grid-cols-1 lg:grid-cols-4 gap-8 mb-12`}>
-            <div className="order-2 lg:order-1 lg:col-span-3 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div className="order-2 lg:order-1 lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
                 <BookOpen className="w-12 h-12 mb-4" color="url(#brandGradient)"  />
                 <h3 className="text-xl font-semibold mb-3">About VEX</h3>
